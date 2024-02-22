@@ -196,7 +196,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
             cy={10}
             r={2.4}
             fill="#fff"
-            stroke="#FFB800"
+            stroke="#BA00A2D9"
             strokeWidth={0.8}
         />
         <Circle
@@ -204,7 +204,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
             cy={46}
             r={1.4}
             fill="#fff"
-            stroke="#FFB800"
+            stroke="#BA00A2D9"
             strokeWidth={0.8}
         />
         <Path
@@ -271,7 +271,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
                 gradientUnits="userSpaceOnUse"
             >
                 <Stop
-                    stopColor="#FFB800"
+                    stopColor="#BA00A2D9"
                     stopOpacity={0.01}
                 />
                 <Stop
@@ -289,7 +289,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
                 gradientUnits="userSpaceOnUse"
             >
                 <Stop
-                    stopColor="#FFB800"
+                    stopColor="#BA00A2D9"
                     stopOpacity={0.01}
                 />
                 <Stop
@@ -307,7 +307,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
                 gradientUnits="userSpaceOnUse"
             >
                 <Stop
-                    stopColor="#FFB800"
+                    stopColor="#BA00A2D9"
                     stopOpacity={0.01}
                 />
                 <Stop
@@ -325,7 +325,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
                 gradientUnits="userSpaceOnUse"
             >
                 <Stop
-                    stopColor="#FFB800"
+                    stopColor="#BA00A2D9"
                     stopOpacity={0.01}
                 />
                 <Stop
@@ -343,7 +343,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
                 gradientUnits="userSpaceOnUse"
             >
                 <Stop
-                    stopColor="#FFB800"
+                    stopColor="#BA00A2D9"
                     stopOpacity={0.01}
                 />
                 <Stop
@@ -361,7 +361,7 @@ const QrWizardFirstPageSVG = (props: SvgProps) => (
                 gradientUnits="userSpaceOnUse"
             >
                 <Stop
-                    stopColor="#FFB800"
+                    stopColor="#BA00A2D9"
                     stopOpacity={0.01}
                 />
                 <Stop

@@ -1,203 +1,151 @@
-//Lodash
-import {router} from 'expo-router';
-import {map, reduce} from 'lodash';
+import {map} from 'lodash';
 import React, {useMemo, useState} from 'react';
-import {Platform} from 'react-native';
-import toast from 'react-native-toast-message';
-import {OrderCard, ScreenContainer, TabSwitch} from '@components';
-//Common Lib.
-import {Card, QrPost} from '@components';
+import Carousel from 'react-native-snap-carousel-v4';
+import CountryCard from '@components/viewHome/CountryCard';
+import MainCard from '@components/viewHome/MainCard';
+import useAppImages from '@hooks/useAppImages';
+import {OrderCard, ScreenContainer} from '@components';
 import {useAuthSession} from '@provider/AuthSessionProvider';
-import {radius} from '@tamagui/themes';
-//UI Lib.
-import {
-    Icon,
-    ScrollView,
-    Stack,
-    Text,
-    Toast,
-    XStack,
-    YStack,
-} from '@ui';
+import {Button, Icon, Input, Stack, Text, XStack, YStack} from '@ui';
+// ScrollView importını kaldırdık
 import {getTokenDetails} from '@utils';
-//Constants
-import {APP_CONFIG, TEXT_OPTIONS} from '../../constants';
-
-interface ICard {
-    fillColor: string;
-    title: string;
-    count: number;
-    width: string;
-    onPress?: () => void;
-}
-
-const cardContentData: ICard[] = [
-    {
-        fillColor: '$success',
-        title: 'Aktif QR',
-        count: 2,
-        width: 'calc(33.33% - $space.2)',
-        onPress: () => {
-            router.push(APP_CONFIG.APP_PATHS.ACTIVE);
-        },
-    },
-    {
-        fillColor: '$warning',
-        title: 'Pasif QR',
-        count: 3,
-        width: 'calc(33.33% - $space.2)',
-        onPress: () => {
-            router.push(APP_CONFIG.APP_PATHS.INACTIVE);
-        },
-    },
-    {
-        fillColor: '$error',
-        title: 'Silinmiş QR',
-        count: 2,
-        width: 'calc(33.33% - $space.2)',
-        onPress: () => {
-            router.push(APP_CONFIG.APP_PATHS.DELETED);
-        },
-    },
-];
-
-// dummy data
-const qr_posts = [
-    {
-        name: 'John Doe',
-        userName: 'bobikshuman',
-        timestamp: 'Dün, 12:00',
-        feed: {
-            plateNumber: '34 TSR 121',
-            brand: 'Tesla',
-            model: 'Model S',
-            viewCount: '131',
-            likeCount: '13',
-            qrType: 'Araç',
-            qrStatus: 'Sedan',
-            qrDescription:
-                'Elektrik ve temiz bir araba çok yaklaşmayın',
-        },
-    },
-    {
-        name: 'John Doe',
-        userName: 'bobikshuman',
-        timestamp: 'Dün, 12:00',
-        feed: {
-            plateNumber: '34 TSR 121',
-            brand: 'Tesla',
-            model: 'Model S',
-            viewCount: '131',
-            likeCount: '13',
-            qrType: 'Araç',
-            qrStatus: 'Sedan',
-            qrDescription:
-                'Elektrik ve temiz bir araba çok yaklaşmayın',
-        },
-    },
-    {
-        name: 'John Doe',
-        userName: 'bobikshuman',
-        timestamp: 'Dün, 12:00',
-        feed: {
-            plateNumber: '34 TSR 121',
-            brand: 'Tesla',
-            model: 'Model S',
-            viewCount: '131',
-            likeCount: '13',
-            qrType: 'Araç',
-            qrStatus: 'Sedan',
-            qrDescription:
-                'Elektrik ve temiz bir araba çok yaklaşmayın',
-        },
-    },
-    {
-        name: 'John Doe',
-        userName: 'bobikshuman',
-        timestamp: 'Dün, 12:00',
-        feed: {
-            plateNumber: '34 TSR 121',
-            brand: 'Tesla',
-            model: 'Model S',
-            viewCount: '131',
-            likeCount: '13',
-            qrType: 'Araç',
-            qrStatus: 'Sedan',
-            qrDescription:
-                'Elektrik ve temiz bir araba çok yaklaşmayın',
-        },
-    },
-    {
-        name: 'John Doe',
-        userName: 'bobikshuman',
-        timestamp: 'Dün, 12:00',
-        feed: {
-            plateNumber: '34 TSR 121',
-            brand: 'Tesla',
-            model: 'Model S',
-            viewCount: '131',
-            likeCount: '13',
-            qrType: 'Araç',
-            qrStatus: 'Sedan',
-            qrDescription:
-                'Elektrik ve temiz bir araba çok yaklaşmayın',
-        },
-    },
-    {
-        name: 'John Doe',
-        userName: 'bobikshuman',
-        timestamp: 'Dün, 12:00',
-        feed: {
-            plateNumber: '34 TSR 121',
-            brand: 'Tesla',
-            model: 'Model S',
-            viewCount: '131',
-            likeCount: '13',
-            qrType: 'Araç',
-            qrStatus: 'Sedan',
-            qrDescription:
-                'Elektrik ve temiz bir araba çok yaklaşmayın',
-        },
-    },
-];
 
 const HomeScreen = () => {
-    const [visibleModals, setVisibleModals] = useState<boolean[]>(
-        qr_posts.map(() => false),
+    const {userAvatar} = useAppImages();
+    const [activeTab, setActiveTab] = useState(0);
+    const {token} = useAuthSession();
+    const userInfo = useMemo(
+        () => token && getTokenDetails(token),
+        [token],
     );
 
-    const [activeTab, setActiveTab] = useState(0);
+    const mainCard = [
+        {
+            userPhoto: '',
+            name: 'Berk Subaşı',
+            userName: '@berksubasi',
+            age: 29,
+            description: 'Musician & Software Developer',
+            backgroundImage: userAvatar,
+        },
+        {
+            userPhoto: '',
+            name: 'Limea Alexandra',
+            userName: '@l.alexandra',
+            age: 24,
+            description: 'Influencer & Designer',
+            backgroundImage: userAvatar,
+        },
+        {
+            userPhoto: '',
+            name: 'Alex Alexandra',
+            userName: '@a.alexandra',
+            age: 37,
+            description: 'Influencer & Designer',
+            backgroundImage: userAvatar,
+        },
+    ];
+
+    const countryCard = [
+        {
+            countryName: 'Turkey',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'India',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'USA',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'Japan',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'China',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'France',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'Germany',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'Greece',
+            bg: userAvatar,
+        },
+        {
+            countryName: 'Italy',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Spain',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Portugal',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Russia',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Australia',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Canada',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Brazil',
+            bg: userAvatar,
+        },
+
+        {
+            countryName: 'Mexico',
+            bg: userAvatar,
+        },
+    ];
+
+    const anyQrPosts = useMemo(
+        () =>
+            mainCard.reduce(
+                (acc, curr) => acc + curr.name.length,
+                0,
+            ) > 0,
+        [mainCard],
+    );
+
+    console.log('anyQrPosts', anyQrPosts);
 
     const handleTabChange = (index: number) => {
         setActiveTab(index);
     };
-    const {token} = useAuthSession();
-
-    const anyQrPosts = useMemo(() => {
-        const totalQr = reduce(
-            cardContentData,
-            (acc, curr) => {
-                return acc + curr.count;
-            },
-            0,
-        );
-
-        return totalQr > 0;
-    }, [qr_posts]);
-
-    console.log('anyQrPosts', anyQrPosts);
-    const userInfo = useMemo(() => {
-        if (!token) return null;
-        return getTokenDetails(token);
-    }, [token]);
 
     return (
         <ScreenContainer
             verticalPadding={0}
             horizontalPadding={0}
-            showOverlay={true}
         >
-            <YStack backgroundColor={'$background'}>
+            <YStack
+                backgroundColor={'$background'}
+                h={'100%'}
+                w={'100%'}
+            >
+                {/* Header */}
                 <YStack
                     alignItems={'center'}
                     backgroundColor={'$primary'}
@@ -213,6 +161,7 @@ const HomeScreen = () => {
                     top={'$9'}
                     zIndex={1}
                 >
+                    {/* User Info */}
                     <XStack
                         borderBottomWidth={'$px'}
                         borderBottomColor={'#FFFFFF89'}
@@ -223,61 +172,19 @@ const HomeScreen = () => {
                             <Text
                                 alignSelf="flex-start"
                                 color={'$white'}
-                                {...TEXT_OPTIONS.BodyMediumXl}
                                 onPress={() => {
                                     console.log('asdfasd');
-                                    toast.show({
-                                        type: 'success',
-                                        text1: 'This is a success toast!',
-                                    });
-                                    // Toast.success({
-                                    //     type: 'success',
-                                    //     title: 'Başarılı',
-                                    //     mesge: 'Hoşgeldin',
-                                    // toast.show({
-                                    //     type: 'error',
-                                    //     text1: 'This is an error toast!',
-                                    // });
-                                    // toast.show({
-                                    //     type: 'warning',
-                                    //     text1: 'This is a warning toast!',
-                                    // });
+                                    // Show toast
                                 }}
                             >
                                 Hoş geldin,
                             </Text>
-                            <Text
-                                {...TEXT_OPTIONS.BodySemiBoldXL}
-                                color={'$white'}
-                            >
-                                {' '}
+                            <Text color={'$white'}>
                                 {userInfo?.username}
                             </Text>
                         </XStack>
-                        <XStack
-                            alignItems={'center'}
-                            onPress={() => {
-                                router.push(
-                                    APP_CONFIG.APP_PATHS.SEARCH,
-                                );
-                            }}
-                        >
-                            <Icon
-                                name="SearchOutline"
-                                //TODO OGUZ: $ sizes doesn't work replace after fix it
-                                width={24}
-                                height={24}
-                                color={'$white'}
-                            />
-                            <Text
-                                {...TEXT_OPTIONS.BodySemiBoldS}
-                                color={'$white'}
-                            >
-                                Ara
-                            </Text>
-                        </XStack>
                     </XStack>
-
+                    {/* Order Card */}
                     <XStack
                         marginTop="$3"
                         marginBottom={'$size.5'}
@@ -285,83 +192,66 @@ const HomeScreen = () => {
                         width={'100%'}
                         justifyContent={'space-between'}
                     >
-                        {anyQrPosts ? (
-                            cardContentData.map(
-                                (
-                                    {
-                                        fillColor,
-                                        title,
-                                        count,
-                                        width,
-                                        onPress,
-                                    },
-                                    index,
-                                ) => (
-                                    <Card
-                                        key={index}
-                                        fill={fillColor}
-                                        title={title}
-                                        count={count}
-                                        onPress={onPress}
-                                    />
-                                ),
-                            )
-                        ) : (
-                            <OrderCard />
-                        )}
+                        <OrderCard />
                     </XStack>
                 </YStack>
-                <YStack paddingHorizontal={'$space.10'}>
-                    <XStack marginTop={'$space.10'}>
-                        <TabSwitch
-                            icon1="LocationIcon"
-                            icon2="Users"
-                            title1="Keşfet"
-                            title2="Takip Ettiklerim"
-                            onPress={() => {}}
-                            onTabChange={() => {}}
-                        />
-                    </XStack>
+                {/* Main Content */}
 
-                    <ScrollView
+                <Stack
+                    paddingHorizontal={'$space.10'}
+                    marginTop={'$space.10'}
+                    ai={'center'}
+                    gap={'$5'}
+                    h={'100%'}
+                    w={'100%'}
+                    mt={'$13'}
+                >
+                    <YStack h={'$25'}>
+                        <Carousel
+                            data={countryCard}
+                            renderItem={({item}) => (
+                                <CountryCard
+                                    countryName={item.countryName}
+                                    bg={item.bg}
+                                />
+                            )}
+                            sliderWidth={400}
+                            itemWidth={100}
+                        />
+                    </YStack>
+                    <XStack
                         w={'100%'}
-                        showCustomScrollBar={false}
+                        gap={'$3'}
                     >
-                        <YStack
-                            alignItems={'center'}
-                            marginTop={'$space.5'}
-                            backgroundColor={'$background'}
-                        >
-                            {map(qr_posts, (item, index) => {
-                                const toggleModalVisible = () => {
-                                    setVisibleModals((prev) =>
-                                        prev.map(
-                                            (bool, i) =>
-                                                i === index && !bool,
-                                        ),
-                                    );
-                                };
-                                return (
-                                    <YStack
-                                        w={'100%'}
-                                        mb={'$8'}
-                                    >
-                                        <QrPost
-                                            key={index}
-                                            isModalVisible={
-                                                visibleModals[index]
-                                            }
-                                            toggleModalVisible={
-                                                toggleModalVisible
-                                            }
-                                            {...item}
-                                        />
-                                    </YStack>
-                                );
-                            })}
-                        </YStack>
-                    </ScrollView>
-                </YStack>
+                        <Stack w={'100%'}>
+                            <Input
+                                size="large"
+                                leftIconName="SearchIcon"
+                                placeholder="Search locations or members"
+                                backgroundColor={'$primaryLight'}
+                                placeholderTextColor="$white"
+                                color="$white"
+                                w={'100%'}
+                            />
+                        </Stack>
+                    </XStack>
+                    {/* Main Card Carousel */}
+                    <Carousel
+                        data={mainCard}
+                        renderItem={({item}) => (
+                            <MainCard
+                                backgroundImage={item.backgroundImage}
+                                age={item.age}
+                                description={item.description}
+                                name={item.name}
+                                userName={item.userName}
+                                userPhoto={item.userPhoto}
+                            />
+                        )}
+                        sliderWidth={400}
+                        itemWidth={330}
+                    />
+                </Stack>
             </YStack>
         </ScreenContainer>
     );

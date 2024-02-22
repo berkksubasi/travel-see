@@ -19,12 +19,12 @@ import {
 
 const texts = {
     login: {
-        desc: 'Hesabınız yok mu?',
-        title: 'Kaydol',
+        desc: "Don't have an account?",
+        title: 'Sign Up',
     },
     register: {
-        desc: 'Zaten hesabınız var mı?',
-        title: 'Giriş Yap',
+        desc: 'Already have an account?',
+        title: 'Sign In',
     },
 };
 interface IButton {
@@ -78,7 +78,7 @@ const SocialSign: React.FC<IProps> = ({type}) => {
                     color={'$grayscale400'}
                     paddingHorizontal="$space.4"
                 >
-                    veya
+                    or
                 </Text>
             </YStack>
             <XStack
@@ -89,7 +89,7 @@ const SocialSign: React.FC<IProps> = ({type}) => {
                 {map(buttons, (button, index) => (
                     <LinearGradient
                         key={button.icon + index}
-                        colors={['$whiteButton','$bgSocial']}
+                        colors={['$whiteButton', '$bgSocial']}
                         borderRadius={'$4'}
                     >
                         <IconButton

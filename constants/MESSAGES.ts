@@ -1,32 +1,32 @@
 const VALIDATION_MESSAGES = {
   // REGISTER
-  usernameRequired: 'Kullanıcı Adı Gerekli',
-  emailRequired: 'E-posta Adresi Gerekli',
-  phoneRequired: 'Telefon Numarası Gerekli',
-  passwordRequired: 'Şifre Gerekli',
-  passwordConfirmRequired: 'Şifrenizi Onaylamanız Gerekli',
-  passwordMatchRequired: 'Şifreler Eşleşmiyor',
+  usernameRequired: 'Username Required',
+  emailRequired: 'Email Address Required',
+  phoneRequired: 'Phone Number Required',
+  passwordRequired: 'Password Required',
+  passwordConfirmRequired: 'You Need to Confirm Your Password',
+  passwordMatchRequired: "Passwords Don't Match",
 }
 
 const KEY_MESSAGES = {
-  "username": "Kullanıcı Adı",
-  "email": "E-posta Adresi",
-  "phone": "Telefon Numarası",
-  "password": "Şifre",
-  "passwordConfirm": "Şifre Onayı",
+  "username": "Username",
+  "email": "E-Mail",
+  "phone": "Phone",
+  "password": "Password",
+  "passwordConfirm": "Password Confirm",
 }
 
 const SUCCESS_MESSAGES = {
-  registerSuccess: 'Hesabınız Oluşturuldu',
-  loginSuccess: 'Giriş Başarı ile tamamlandı',
+  registerSuccess: 'Your Account Has Been Created',
+  loginSuccess: 'Login completed successfully',
 
 }
 
 
 const ERROR_MESSAGES = {
-  loginError: 'Kullanıcı adı ya da şifre hatalı.',
-  usernameError: 'Kullanıcı adı zaten mevcut.',
-  emailError: 'Doğru bir e-posta adresi giriniz.',
+  loginError: 'The username or password is incorrect.',
+  usernameError: 'Username already exists.',
+  emailError: 'Please enter a correct e-mail address.',
 }
 
 export default { KEY_MESSAGES, VALIDATION_MESSAGES, SUCCESS_MESSAGES, ERROR_MESSAGES };

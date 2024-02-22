@@ -59,6 +59,7 @@ const TabsLayout = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Anasayfa',
+                    tabBarActiveTintColor: APP_COLORS.primary,
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon

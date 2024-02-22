@@ -35,20 +35,20 @@ interface IInputMock {
 
 const inputMock: IInputMock = {
     username: {
-        placeholder: 'Kullanıcı adı',
+        placeholder: 'Username',
         icon: 'UserIcon',
     },
     email: {
-        placeholder: 'E-posta adresi',
+        placeholder: 'E-mail',
         icon: 'MailIcon',
     },
     password: {
-        placeholder: 'Şifre',
+        placeholder: 'Password',
         icon: 'LockIcon',
         canSecure: true,
     },
     passwordConfirm: {
-        placeholder: 'Şifre tekrar',
+        placeholder: 'Password Confirm',
         icon: 'LockIcon',
         canSecure: true,
     },

@@ -194,7 +194,7 @@ ios/tarat/Images.xcassets/AppIcon.appiconset/Contents.json
 ios/tarat/Images.xcassets/SplashScreen.imageset/Contents.json
 ios/tarat/Images.xcassets/SplashScreen.imageset/image.png
 ios/tarat/Images.xcassets/SplashScreenBackground.imageset/Contents.json
-ios/tarat/Images.xcassets/SplashScreenBackground.imageset/image.png
+
 ios/tarat/Supporting/Expo.plist
 ios/tarat.xcodeproj/project.pbxproj
 ios/tarat.xcodeproj/xcshareddata/xcschemes/tarat.xcscheme

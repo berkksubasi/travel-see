@@ -18,15 +18,16 @@ export default function WelcomeScreen() {
     const {welcomeBg} = useAppImages();
 
     return (
-        <ScreenContainer verticalPadding>
+        <ScreenContainer
+            verticalPadding={true}
+            horizontalPadding={true}
+        >
             <Stack
                 width={width}
                 alignItems={'center'}
                 position="absolute"
                 bottom={0}
-            >
-                <Image source={welcomeBg} />
-            </Stack>
+            ></Stack>
             <YStack
                 style={{
                     height: '100%',
@@ -46,44 +47,26 @@ export default function WelcomeScreen() {
                         gap={'$5'}
                         alignItems="center"
                     >
-                        <Icon name="LogoSVG" />
-                        <Icon name="LogoTextSVG" />
+                        <Image
+                            width={175}
+                            height={175}
+                            source={welcomeBg}
+                        />
+                        <Text
+                            textAlign="center"
+                            p={'$6'}
+                            {...TEXT_OPTIONS.H1}
+                        >
+                            Travel See
+                        </Text>
                     </YStack>
-
-                    {/*Slogan */}
-                    <Text
-                        {...TEXT_OPTIONS.BodyRegularXl}
-                        color={'$grayscale600'}
-                        textAlign="center"
-                        // {...homeLinkProps}
-                    >
-                        Hadi sen de{' '}
-                        <Stack position={'relative'} alignItems='center' justifyContent='center'>
-                            <Text
-                                {...TEXT_OPTIONS.BodyRegularXl}
-                                marginHorizontal="$space.1"
-                                color={'$grayscale600'}
-                            >
-                                TARAT
-                            </Text>
-                            <Stack
-                                zIndex={'$1'}
-                                position={'absolute'}
-                            >
-                                <Icon
-                                    width={66}
-                                    height={24}
-                                    name="TaratFrame"
-                                />
-                            </Stack>
-                        </Stack>
-                        {'\n'}
-                        ile aracının kimliğini oluştur.
-                    </Text>
                 </Stack>
 
                 {/*Button */}
-                <YStack w={'100%'} gap={'$4'} mt={'$42'}>
+                <YStack
+                    w={'100%'}
+                    gap={'$4'}
+                >
                     <LoginButton />
                     <RegisterButton />
                 </YStack>

@@ -15,7 +15,7 @@ const RegisterButton = () => {
             borderColor={'$primary'}
             onPress={() => router.push(APP_CONFIG.APP_PATHS.SIGN_UP)}
         >
-            <Text {...TEXT_OPTIONS.BodySemiBoldL}>Kayıt Ol</Text>
+            <Text {...TEXT_OPTIONS.BodySemiBoldL}>Sign Up</Text>
         </Button>
     );
 };

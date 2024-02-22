@@ -16,7 +16,7 @@ const faqData = [
     {
         title: "Tarat'ı kullanmaya nasıl başlayabilirim?",
         content:
-            "Tarat'ı kullanmaya başlamak kolaydır. Uygulamayı App Store veya Google Play'den indirmeniz ve hesabınızı oluşturmak için ekrandaki talimatları izlemeniz yeterlidir. Kayıt olduktan sonra araba camlarında QR kodlarını taramaya hemen başlayabilirsiniz.",
+            "Tarat'ı kullanmaya başlamak kolaydır. Uygulamayı App Store veya Google Play'den indirmeniz ve hesabınızı oluşturmak için ekrandaki talimatları izlemeniz yeterlidir. Sign Upduktan sonra araba camlarında QR kodlarını taramaya hemen başlayabilirsiniz.",
     },
     {
         title: 'Tarat sadece araç sahipleri için mi?',

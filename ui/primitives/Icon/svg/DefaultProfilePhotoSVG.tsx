@@ -43,7 +43,7 @@ function DefaultProfilePhotoSVG(props: SvgProps) {
                     <Stop stopColor="#FFC735" />
                     <Stop
                         offset={1}
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                     />
                 </LinearGradient>
                 <LinearGradient

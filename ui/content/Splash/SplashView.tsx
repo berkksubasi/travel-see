@@ -29,7 +29,7 @@ export function SplashView({onReady}: ISplashViewProps) {
             onLayout={handleLayout}
             aspectRatio={windowWidth / windowHeight}
             resizeMode="contain"
-            source={require('@assets/images/splash.jpg')}
+            source={require('@assets/images/splash.png')}
         />
     );
 }

@@ -107,7 +107,7 @@ export default function SignInScreen() {
                         color={'$black'}
                         {...TEXT_OPTIONS.H4}
                     >
-                        Giriş Yap
+                        Sign In
                     </Text>
                 </YStack>
                 <YStack gap={'$16'}>
@@ -119,7 +119,7 @@ export default function SignInScreen() {
                                     required: {
                                         value: true,
                                         message:
-                                            'Bu alan zorunludur*',
+                                            'This field is required*',
                                     },
                                     onChange: () => {
                                         form.clearErrors(
@@ -133,7 +133,7 @@ export default function SignInScreen() {
                                     size="large"
                                     leftIconName="UserIcon"
                                     error={false}
-                                    placeholder="E-posta, kullanıcı adı veya telefon numarası"
+                                    placeholder="Email, username or phone number"
                                 />
                             </Form.Field>
 
@@ -143,7 +143,7 @@ export default function SignInScreen() {
                                     required: {
                                         value: true,
                                         message:
-                                            'Lütfen Şifrenizi Giriniz*',
+                                            'Please Enter Your Password*',
                                     },
                                     onChange: () => {
                                         form.clearErrors('password');
@@ -157,7 +157,7 @@ export default function SignInScreen() {
                                     secureTextEntry={secureEntry}
                                     addOns={rightActions}
                                     leftIconName="LockIcon"
-                                    placeholder="Şifre"
+                                    placeholder="Password"
                                 />
                             </Form.Field>
                         </Form>
@@ -174,7 +174,7 @@ export default function SignInScreen() {
                                 marginTop={'$space.4'}
                                 color={'$primary'}
                             >
-                                Şifreni mi unuttun?
+                                Did you forget your password?
                             </Text>
                             {/* </TouchableOpacity> */}
                         </XStack>
@@ -196,7 +196,7 @@ export default function SignInScreen() {
                             {...TEXT_OPTIONS.BodySemiBoldL}
                             color={'$white'}
                         >
-                            Giriş yap
+                            Sign In
                         </Text>
                     </Button>
                 </YStack>

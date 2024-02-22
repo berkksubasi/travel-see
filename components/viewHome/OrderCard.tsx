@@ -1,9 +1,12 @@
 import React from 'react';
+import {Avatar} from 'tamagui';
+import useAppImages from '@hooks/useAppImages';
 import {Button, Stack, Text, XStack, YStack} from '@ui/primitives';
 import APP_SHADOWS from '@constants/APP_SHADOWS';
 import TEXT_OPTIONS from '@constants/TEXT_OPTIONS';
 
 const OrderCard = () => {
+    const {userAvatar} = useAppImages();
     return (
         <XStack
             {...APP_SHADOWS.small}
@@ -28,21 +31,24 @@ const OrderCard = () => {
                     backgroundColor={'$primary'}
                     borderRadius={'$full'}
                 />
+                <Avatar>
+                    <Avatar.Image source={userAvatar} />
+                </Avatar>
                 <YStack
                     jc={'center'}
                     ai={'flex-start'}
                 >
                     <Text
                         {...TEXT_OPTIONS.BodyMediumS}
-                        color={'$grayscale700'}
+                        color={'$grayscale900'}
                     >
-                        Henüz QR'ınız bulunmamaktadır
+                        Upgrade Package
                     </Text>
                     <Text
                         {...TEXT_OPTIONS.BodyMediumM}
-                        color={'$grayscale900'}
+                        color={'$grayscale700'}
                     >
-                        QR Satın Alın
+                        "Free Plan"
                     </Text>
                 </YStack>
             </XStack>
@@ -50,13 +56,16 @@ const OrderCard = () => {
             <Button
                 borderRadius={'$4'}
                 variant="primary"
+                ai={'center'}
+                jc={'center'}
             >
                 <Stack>
                     <Text
                         {...TEXT_OPTIONS.BodySemiBoldM}
                         color={'$white'}
+                        textAlign="center"
                     >
-                        Satın Al
+                        Buy
                     </Text>
                 </Stack>
             </Button>

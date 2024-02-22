@@ -131,14 +131,14 @@ const RegisterWizard: React.FC<IProps> = () => {
             case 0:
                 return {
                     // @todo-REPLACEMENT GET hardcoded string from messages
-                    title: 'Hesap Oluştur',
+                    title: 'Create Account',
                     icon: 'AccountCustomIcon',
                 };
             case 1:
                 return {
                     // @todo-REPLACEMENT GET hardcoded string from messages
                     icon: 'MailCustomIcon',
-                    title: 'E-Postanı Doğrula',
+                    title: 'Verify your email',
                 };
             // case 2:
             //   return {
@@ -152,7 +152,7 @@ const RegisterWizard: React.FC<IProps> = () => {
             default:
                 return {
                     component: null,
-                    title: 'Hesap Oluştur',
+                    title: 'Create Account',
                     icon: 'ChevronLeftIcon',
                 };
         }
@@ -166,7 +166,7 @@ const RegisterWizard: React.FC<IProps> = () => {
         const response = await authServices.register(tempUser);
         if (response) {
             // @todo-REPLACEMENT GET hardcoded string from messages
-            Toast.success({title: 'Kodunuz doğrulandı.'});
+            Toast.success({title: 'Your Code has been Verified.'});
         }
 
         return response;
@@ -193,14 +193,14 @@ const RegisterWizard: React.FC<IProps> = () => {
                         if (data.password !== data.passwordConfirm) {
                             // @todo-REPLACEMENT GET hardcoded string from messages
                             return Toast.error({
-                                title: 'Şifreler eşleşmiyor!',
+                                title: 'Passwords do not match!',
                             });
                         }
 
                         if (data.password.length < 8) {
                             // @todo-REPLACEMENT GET hardcoded string from messages
                             return Toast.error({
-                                title: 'Şifre en az 8 karakter olmalıdır!',
+                                title: 'Password must be at least 8 characters!',
                             });
                         }
 
@@ -209,7 +209,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                             .sendVerifyEmailOTP(data.email)
                             .then(() => {
                                 Toast.success({
-                                    title: 'Kodunuz gönderildi.',
+                                    title: 'Your code has been sent.',
                                 });
                                 changeStep(type);
                                 return setIsReqPending(() => false);
@@ -218,7 +218,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                                 Toast.error({
                                     title:
                                         error?.message ||
-                                        'başarısız.',
+                                        'unsuccessful.',
                                 });
                                 return setIsReqPending(() => false);
                             });
@@ -231,7 +231,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                         )
                             .then(() => {
                                 Toast.success({
-                                    title: 'Hesabınız doğrulandı.',
+                                    title: 'Your account has been verified.',
                                 });
                                 changeStep(type);
                                 setIsReqPending(() => false);
@@ -240,7 +240,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                                 Toast.error({
                                     title:
                                         error?.message ||
-                                        'başarısız.',
+                                        'unsuccessful.',
                                 });
                                 return setIsReqPending(() => false);
                             });
@@ -254,7 +254,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                 } else {
                     // @todo-REPLACEMENT GET hardcoded string from messages
                     Toast.error({
-                        title: 'Lütfen formu eksiksiz doldurunuz!',
+                        title: 'Please fill out the form completely!',
                     });
                 }
             })();
@@ -316,7 +316,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                         <StatusResultContent
                             // @todo-REPLACEMENT GET hardcoded string from messages
                             buttons={buttons}
-                            title="Tebrikler!"
+                            title="Congratulations!"
                             status="success"
                             message={
                                 MESSAGES.SUCCESS_MESSAGES
@@ -347,9 +347,7 @@ const RegisterWizard: React.FC<IProps> = () => {
                                 {...TEXT_OPTIONS.BodySemiBoldL}
                                 color={'$white'}
                             >
-                                {stepIndex === 7
-                                    ? 'GİRİŞ YAP'
-                                    : 'Sonraki'}
+                                {stepIndex === 7 ? 'LOG IN' : 'Next'}
                             </Text>
                         </Button>
                         {stepIndex === 0 && (

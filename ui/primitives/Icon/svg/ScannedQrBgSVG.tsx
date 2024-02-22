@@ -49,7 +49,7 @@ function ScannedQrBgSVG(props: SvgProps) {
                     gradientUnits="userSpaceOnUse"
                 >
                     <Stop
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                         stopOpacity={0.01}
                     />
                     <Stop
@@ -67,7 +67,7 @@ function ScannedQrBgSVG(props: SvgProps) {
                     gradientUnits="userSpaceOnUse"
                 >
                     <Stop
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                         stopOpacity={0.01}
                     />
                     <Stop
@@ -85,7 +85,7 @@ function ScannedQrBgSVG(props: SvgProps) {
                     gradientUnits="userSpaceOnUse"
                 >
                     <Stop
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                         stopOpacity={0.01}
                     />
                     <Stop
@@ -103,7 +103,7 @@ function ScannedQrBgSVG(props: SvgProps) {
                     gradientUnits="userSpaceOnUse"
                 >
                     <Stop
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                         stopOpacity={0.01}
                     />
                     <Stop
@@ -121,7 +121,7 @@ function ScannedQrBgSVG(props: SvgProps) {
                     gradientUnits="userSpaceOnUse"
                 >
                     <Stop
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                         stopOpacity={0.01}
                     />
                     <Stop
@@ -139,7 +139,7 @@ function ScannedQrBgSVG(props: SvgProps) {
                     gradientUnits="userSpaceOnUse"
                 >
                     <Stop
-                        stopColor="#FFB800"
+                        stopColor="#BA00A2D9"
                         stopOpacity={0.01}
                     />
                     <Stop

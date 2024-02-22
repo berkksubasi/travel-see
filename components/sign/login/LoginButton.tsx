@@ -12,13 +12,14 @@ const LoginButton = () => {
         <Button
             variant="primary"
             size="large"
+            bg={'$primary'}
             onPress={() => router.push(APP_CONFIG.APP_PATHS.SIGN_IN)}
         >
             <Text
                 {...TEXT_OPTIONS.BodySemiBoldL}
                 color={'$white'}
             >
-                Giriş Yap
+                Sign In
             </Text>
         </Button>
     );
