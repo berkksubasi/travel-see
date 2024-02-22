@@ -1,0 +1,156 @@
+import Svg, {
+    Defs,
+    LinearGradient,
+    Path,
+    Stop,
+    SvgProps,
+} from 'react-native-svg';
+
+function ScannedQrBgSVG(props: SvgProps) {
+    return (
+        <Svg
+            width={430}
+            height={699}
+            viewBox="0 0 430 699"
+            fill="none"
+            {...props}
+        >
+            <Path
+                d="M36.5 0v189c0 9.389-7.611 17-17 17h-52"
+                stroke="url(#paint0_linear_1205_17369)"
+            />
+            <Path
+                d="M75 33v386c0 9.389-7.611 17-17 17H-60"
+                stroke="url(#paint1_linear_1205_17369)"
+            />
+            <Path
+                d="M120 174v507c0 9.389-7.611 17-17 17H-55"
+                stroke="url(#paint2_linear_1205_17369)"
+            />
+            <Path
+                d="M393.5 0v189c0 9.389 7.611 17 17 17h52"
+                stroke="url(#paint3_linear_1205_17369)"
+            />
+            <Path
+                d="M355 33v386c0 9.389 7.611 17 17 17h118"
+                stroke="url(#paint4_linear_1205_17369)"
+            />
+            <Path
+                d="M310 174v507c0 9.389 7.611 17 17 17h158"
+                stroke="url(#paint5_linear_1205_17369)"
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_1205_17369"
+                    x1={2}
+                    y1={0}
+                    x2={2}
+                    y2={206}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop
+                        stopColor="#FFB800"
+                        stopOpacity={0.01}
+                    />
+                    <Stop
+                        offset={1}
+                        stopColor="#FFDA7B"
+                        stopOpacity={0.6}
+                    />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint1_linear_1205_17369"
+                    x1={7.5}
+                    y1={33}
+                    x2={7.5}
+                    y2={436}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop
+                        stopColor="#FFB800"
+                        stopOpacity={0.01}
+                    />
+                    <Stop
+                        offset={1}
+                        stopColor="#FFDA7B"
+                        stopOpacity={0.6}
+                    />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint2_linear_1205_17369"
+                    x1={32.5}
+                    y1={174}
+                    x2={32.5}
+                    y2={698}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop
+                        stopColor="#FFB800"
+                        stopOpacity={0.01}
+                    />
+                    <Stop
+                        offset={1}
+                        stopColor="#FFDA7B"
+                        stopOpacity={0.6}
+                    />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint3_linear_1205_17369"
+                    x1={428}
+                    y1={0}
+                    x2={428}
+                    y2={206}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop
+                        stopColor="#FFB800"
+                        stopOpacity={0.01}
+                    />
+                    <Stop
+                        offset={1}
+                        stopColor="#FFDA7B"
+                        stopOpacity={0.6}
+                    />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint4_linear_1205_17369"
+                    x1={422.5}
+                    y1={33}
+                    x2={422.5}
+                    y2={436}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop
+                        stopColor="#FFB800"
+                        stopOpacity={0.01}
+                    />
+                    <Stop
+                        offset={1}
+                        stopColor="#FFDA7B"
+                        stopOpacity={0.6}
+                    />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint5_linear_1205_17369"
+                    x1={397.5}
+                    y1={174}
+                    x2={397.5}
+                    y2={698}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop
+                        stopColor="#FFB800"
+                        stopOpacity={0.01}
+                    />
+                    <Stop
+                        offset={1}
+                        stopColor="#FFDA7B"
+                        stopOpacity={0.6}
+                    />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+
+export default ScannedQrBgSVG;
