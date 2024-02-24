@@ -14,7 +14,7 @@ const CircleIconButton: React.FC<IProps> = ({icon, variant}) => {
         return variant === 'primary'
             ? '$primary'
             : variant === 'tertiary'
-            ? '$white'
+            ? '$transparent'
             : '$grayscale400';
     };
 
@@ -22,7 +22,7 @@ const CircleIconButton: React.FC<IProps> = ({icon, variant}) => {
         return variant === 'primary'
             ? '$white'
             : variant === 'tertiary'
-            ? '$white'
+            ? '$transparent'
             : '$grayscale300';
     };
 
@@ -72,7 +72,9 @@ const CircleIconButton: React.FC<IProps> = ({icon, variant}) => {
                     variant={variant}
                     borderRadius={'$full'}
                     backgroundColor={
-                        variant === 'tertiary' ? '$white' : variant
+                        variant === 'tertiary'
+                            ? '$transparent'
+                            : variant
                     }
                     icon={icon}
                     //iconColor={iconColor}

@@ -28,6 +28,20 @@ const useAppImages = () => {
       userAvatar: require("@/assets/images/placeholder/user-avatar.png"),
       filterFrame: require("@/assets/images/filter-frame.png"),
       comingSoon: require("@/assets/images/coming-soon.png"),
+
+      //USER_PHOTOS
+      user1: require("@/assets/images/userPhoto/1.png"),
+      user2: require("@/assets/images/userPhoto/2.png"),
+      user3: require("@/assets/images/userPhoto/3.png"),
+      user4: require("@/assets/images/userPhoto/4.png"),
+      user5: require("@/assets/images/userPhoto/5.png"),
+      user6: require("@/assets/images/userPhoto/6.png"),
+      user7: require("@/assets/images/userPhoto/7.png"),
+      user8: require("@/assets/images/userPhoto/8.png"),
+
+      //FLAGS
+      turkey: require("@/assets/images/flags/turkey.png"),
+      usa: require("@/assets/images/flags/usa.png"),
     }
   }, [])
 

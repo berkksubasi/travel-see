@@ -31,7 +31,7 @@ const HeaderShown: React.FC<IProps> = ({
                     ]}
                     start={[0, 1]}
                     end={[1, 0]}
-                    h={'$11.5'}
+                    h={'$px'}
                     ml={paddingHorizontal ? '$-10' : '$-5'}
                     w={width}
                     mt={'$12'}

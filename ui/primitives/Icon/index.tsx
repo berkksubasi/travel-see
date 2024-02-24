@@ -66,6 +66,7 @@ import PrivacyIcon from './react/in-app/Privacy';
 import QRIcon from './react/in-app/QR';
 import RemoveUser from './react/in-app/RemoveUser';
 import ScanRadius from './react/in-app/ScanRadius';
+import Secure from './react/in-app/Secure';
 import SendIcon from './react/in-app/Send';
 import SentIcon from './react/in-app/Sent';
 import SettingsIcon from './react/in-app/Settings';
@@ -187,6 +188,7 @@ const icons = {
     ChevronDownIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
+    Secure,
     ChevronUpIcon,
     CloseIcon,
     ConnectIcon,

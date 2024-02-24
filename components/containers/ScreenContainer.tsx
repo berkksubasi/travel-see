@@ -1,6 +1,7 @@
 import {isBoolean} from 'lodash';
 import React from 'react';
 import {Platform, useWindowDimensions} from 'react-native';
+import {Path, Stop, Svg} from 'react-native-svg';
 import TEXT_OPTIONS from '@constants/TEXT_OPTIONS';
 import {
     IconButton,
@@ -70,12 +71,13 @@ const ScreenContainer: React.FC<IProps> = ({
                         position="absolute"
                         bottom="$0"
                         width={'100%'}
-                        height={Platform.OS === 'ios' ? 95 : 71}
-                        zIndex={1}
+                        height={Platform.OS === 'ios' ? 140 : 71}
+                        zIndex={-100}
+                        borderRadius={'$6'}
                         colors={[
-                            '$background',
-                            '$background',
-                            '$background',
+                            '#BA00A205',
+                            '#BA00A205',
+                            '#BA00A205',
                         ]}
                         opacity={1}
                     />

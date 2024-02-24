@@ -1,40 +1,65 @@
-import React from 'react';
-import {Text, YStack} from '@ui/primitives';
+import React, {useMemo} from 'react';
+import {Image, TouchableOpacity} from 'react-native';
+import {CardBackground, CardFrame} from 'tamagui';
+import useAppImages from '@hooks/useAppImages';
+import {Stack, Text, YStack} from '@ui/primitives';
 import TEXT_OPTIONS from '@constants/TEXT_OPTIONS';
 
 interface ICountryCardProps {
     countryName: string;
-    bg: string;
+    bg: any;
 }
 
-const CountryCard: React.FC<ICountryCardProps> = ({countryName}) => {
+const CountryCard: React.FC<ICountryCardProps> = ({
+    countryName,
+    bg,
+}) => {
     return (
-        <YStack
+        <CardFrame
             w={'$21'}
             h={'$24'}
             borderRadius={'$4'}
-            borderWidth={'$px'}
-            borderColor={'$primary'}
             ai={'center'}
             jc={'center'}
         >
             <YStack
-                bg={'$primaryLight'}
                 p={'$2'}
                 jc={'flex-end'}
                 borderRadius={'$4'}
                 w={'$19'}
                 h={'$20'}
             >
-                <Text
-                    alignSelf="flex-start"
-                    color={'$white'}
-                    {...TEXT_OPTIONS.BodySemiBoldS}
+                <CardBackground borderRadius={'$3'}>
+                    <Image
+                        source={bg}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                        }}
+                    />
+                </CardBackground>
+                <Stack
+                    ai="center"
+                    jc={'center'}
+                    w={'$full'}
+                    h={'$full'}
+                    borderRadius={'$1.5'}
+                    px="$0.5"
                 >
-                    {countryName}
-                </Text>
+                    <Text
+                        color={'$white'}
+                        shadowColor={'black'}
+                        shadowOffset={{width: 0, height: 2}}
+                        shadowOpacity={1}
+                        shadowRadius={2}
+                        {...TEXT_OPTIONS.BodySemiBoldS}
+                    >
+                        {countryName}
+                    </Text>
+                </Stack>
             </YStack>
-        </YStack>
+        </CardFrame>
     );
 };
 

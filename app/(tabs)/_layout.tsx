@@ -36,8 +36,8 @@ const TabsLayout = () => {
                     paddingRight: 34,
                     backgroundColor:
                         theme === 'light'
-                            ? APP_COLORS.lightColors.grayscale50
-                            : APP_COLORS.darkColors.grayscale50,
+                            ? APP_COLORS.lightColors.primary2
+                            : APP_COLORS.darkColors.primary2,
                     shadowColor: APP_COLORS.black,
                     shadowOpacity: 0.05,
                     shadowRadius: 10,
@@ -58,7 +58,7 @@ const TabsLayout = () => {
                 name={APP_CONFIG.APP_ROUTES.TABS.HOME}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Anasayfa',
+                    tabBarLabel: 'Home',
                     tabBarActiveTintColor: APP_COLORS.primary,
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
@@ -71,7 +71,7 @@ const TabsLayout = () => {
                         ) : (
                             <Icon
                                 name="HomeIcon"
-                                color={'$grayscale300'}
+                                color={'$primaryLight'}
                                 height={size}
                                 width={size}
                             />
@@ -83,7 +83,7 @@ const TabsLayout = () => {
                 name={APP_CONFIG.APP_ROUTES.TABS.STATS}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Veriler',
+                    tabBarLabel: 'Map',
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon
@@ -95,7 +95,7 @@ const TabsLayout = () => {
                         ) : (
                             <Icon
                                 name="StatsIcon"
-                                color={'$grayscale300'}
+                                color={'$primaryLight'}
                                 height={size}
                                 width={size}
                             />
@@ -121,7 +121,7 @@ const TabsLayout = () => {
                             size="large"
                             backgroundColor={'$primary'}
                             borderWidth={'$px'}
-                            borderColor={'$grayscale300'}
+                            borderColor={'$primaryLight'}
                             outlineColor="$grayscale800"
                             color="$white"
                             icon="Scan"
@@ -141,7 +141,7 @@ const TabsLayout = () => {
                 name={APP_CONFIG.APP_ROUTES.TABS.CHAT}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Mesajlar',
+                    tabBarLabel: 'Messages',
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon
@@ -153,7 +153,7 @@ const TabsLayout = () => {
                         ) : (
                             <Icon
                                 name="MessageIcon"
-                                color={'$grayscale300'}
+                                color={'$primaryLight'}
                                 height={size}
                                 width={size}
                             />
@@ -164,7 +164,7 @@ const TabsLayout = () => {
                 name={APP_CONFIG.APP_ROUTES.TABS.PROFILE}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Profil',
+                    tabBarLabel: 'Profile',
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon
@@ -176,7 +176,7 @@ const TabsLayout = () => {
                         ) : (
                             <Icon
                                 name="ProfileIcon"
-                                color={'$grayscale300'}
+                                color={'$primaryLight'}
                                 height={size}
                                 width={size}
                             />

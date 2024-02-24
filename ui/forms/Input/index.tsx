@@ -217,7 +217,7 @@ function BaseInput(
                         borderWidth={'$px'}
                         borderLeftWidth={'$0'}
                         disabled={disabled}
-                        backgroundColor={sharedStyles.backgroundColor}
+                        backgroundColor={'$white'}
                     >
                         {addOns.map(
                             ({

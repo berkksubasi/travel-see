@@ -7,11 +7,21 @@ import useAppImages from '@hooks/useAppImages';
 import {OrderCard, ScreenContainer} from '@components';
 import {useAuthSession} from '@provider/AuthSessionProvider';
 import {Button, Icon, Input, Stack, Text, XStack, YStack} from '@ui';
-// ScrollView importını kaldırdık
 import {getTokenDetails} from '@utils';
 
 const HomeScreen = () => {
-    const {userAvatar} = useAppImages();
+    const {
+        user1,
+        user2,
+        user3,
+        user4,
+        user5,
+        user6,
+        user7,
+        user8,
+        turkey,
+        usa,
+    } = useAppImages();
     const [activeTab, setActiveTab] = useState(0);
     const {token} = useAuthSession();
     const userInfo = useMemo(
@@ -21,102 +31,105 @@ const HomeScreen = () => {
 
     const mainCard = [
         {
-            userPhoto: '',
+            userPhoto: user1,
             name: 'Berk Subaşı',
             userName: '@berksubasi',
             age: 29,
             description: 'Musician & Software Developer',
-            backgroundImage: userAvatar,
         },
         {
-            userPhoto: '',
+            userPhoto: user2,
             name: 'Limea Alexandra',
             userName: '@l.alexandra',
             age: 24,
             description: 'Influencer & Designer',
-            backgroundImage: userAvatar,
         },
         {
-            userPhoto: '',
+            userPhoto: user3,
             name: 'Alex Alexandra',
             userName: '@a.alexandra',
             age: 37,
             description: 'Influencer & Designer',
-            backgroundImage: userAvatar,
+        },
+        {
+            userPhoto: user4,
+            name: 'Berk Subaşı',
+            userName: '@berksubasi',
+            age: 29,
+            description: 'Musician & Software Developer',
+        },
+        {
+            userPhoto: user5,
+            name: 'Limea Alexandra',
+            userName: '@l.alexandra',
+            age: 24,
+            description: 'Influencer & Designer',
+        },
+        {
+            userPhoto: user6,
+            name: 'Alex Alexandra',
+            userName: '@a.alexandra',
+            age: 37,
+            description: 'Influencer & Designer',
+        },
+        {
+            userPhoto: user7,
+            name: 'Berk Subaşı',
+            userName: '@berksubasi',
+            age: 29,
+            description: 'Musician & Software Developer',
+        },
+        {
+            userPhoto: user8,
+            name: 'Limea Alexandra',
+            userName: '@l.alexandra',
+            age: 24,
+            description: 'Influencer & Designer',
         },
     ];
 
     const countryCard = [
         {
             countryName: 'Turkey',
-            bg: userAvatar,
+            bg: turkey,
         },
         {
             countryName: 'India',
-            bg: userAvatar,
+            bg: usa,
         },
         {
             countryName: 'USA',
-            bg: userAvatar,
+            bg: turkey,
         },
         {
             countryName: 'Japan',
-            bg: userAvatar,
+            bg: user4,
         },
         {
             countryName: 'China',
-            bg: userAvatar,
+            bg: user5,
         },
         {
             countryName: 'France',
-            bg: userAvatar,
+            bg: user6,
         },
         {
             countryName: 'Germany',
-            bg: userAvatar,
+            bg: user7,
         },
+
         {
             countryName: 'Greece',
-            bg: userAvatar,
+            bg: user8,
         },
         {
             countryName: 'Italy',
-            bg: userAvatar,
+            bg: user1,
         },
 
         {
             countryName: 'Spain',
-            bg: userAvatar,
-        },
-
-        {
-            countryName: 'Portugal',
-            bg: userAvatar,
-        },
-
-        {
-            countryName: 'Russia',
-            bg: userAvatar,
-        },
-
-        {
-            countryName: 'Australia',
-            bg: userAvatar,
-        },
-
-        {
-            countryName: 'Canada',
-            bg: userAvatar,
-        },
-
-        {
-            countryName: 'Brazil',
-            bg: userAvatar,
-        },
-
-        {
-            countryName: 'Mexico',
-            bg: userAvatar,
+            bg: user2,
         },
     ];
 
@@ -130,6 +143,7 @@ const HomeScreen = () => {
     );
 
     console.log('anyQrPosts', anyQrPosts);
+    console.log('mainCard', mainCard);
 
     const handleTabChange = (index: number) => {
         setActiveTab(index);
@@ -139,6 +153,7 @@ const HomeScreen = () => {
         <ScreenContainer
             verticalPadding={0}
             horizontalPadding={0}
+            showOverlay={true}
         >
             <YStack
                 backgroundColor={'$background'}
@@ -205,9 +220,11 @@ const HomeScreen = () => {
                     h={'100%'}
                     w={'100%'}
                     mt={'$13'}
+                    borderColor={'$primary'}
                 >
                     <YStack h={'$25'}>
                         <Carousel
+                            vertical={false}
                             data={countryCard}
                             renderItem={({item}) => (
                                 <CountryCard
@@ -228,19 +245,25 @@ const HomeScreen = () => {
                                 size="large"
                                 leftIconName="SearchIcon"
                                 placeholder="Search locations or members"
-                                backgroundColor={'$primaryLight'}
-                                placeholderTextColor="$white"
+                                backgroundColor={'$white'}
+                                placeholderTextColor="$primary"
                                 color="$white"
                                 w={'100%'}
+                                addOns={[
+                                    {
+                                        iconName: 'Filter',
+                                        iconColor: '$primary',
+                                    },
+                                ]}
                             />
                         </Stack>
                     </XStack>
                     {/* Main Card Carousel */}
                     <Carousel
+                        vertical={false}
                         data={mainCard}
                         renderItem={({item}) => (
                             <MainCard
-                                backgroundImage={item.backgroundImage}
                                 age={item.age}
                                 description={item.description}
                                 name={item.name}
