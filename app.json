@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "tarat",
-    "slug": "tarat",
+    "name": "travel-see",
+    "slug": "travel-see",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "Travel See",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -17,7 +17,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.oguzsancaktar.tarat",
+      "bundleIdentifier": "com.observerdev.travel-see",
+      "config": {
+        "MGLMapboxAccessToken": "pk.eyJ1Ijoib2JzZXJ2ZXJkZXYiLCJhIjoiY2xzeWIxN28yMGJxNzJscHA5cTlkY2hmcSJ9.f5saPByL2ncLa5q26001ow"
+      },
       "infoPlist": {
         "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
@@ -28,7 +31,12 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.oguzsancaktar.tarat",
+      "package": "com.observerdev.travelsee",
+      "config": {
+        "googleMaps": {
+          "apiKey": "pk.eyJ1Ijoib2JzZXJ2ZXJkZXYiLCJhIjoiY2xzeWIxN28yMGJxNzJscHA5cTlkY2hmcSJ9.f5saPByL2ncLa5q26001ow"
+        }
+      },
       "permissions": [
         "android.permission.CAMERA"
       ]
@@ -64,14 +72,14 @@
         "origin": false
       },
       "eas": {
-        "projectId": "1bf98d91-152c-4fb1-902d-f38bba7559b0"
+        "projectId": "38ef0ffc-046c-432f-9c2a-02c770dbc84c"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/1bf98d91-152c-4fb1-902d-f38bba7559b0"
+      "url": "https://u.expo.dev/38ef0ffc-046c-432f-9c2a-02c770dbc84c"
     }
   }
 }

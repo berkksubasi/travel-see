@@ -246,7 +246,7 @@ const HomeScreen = () => {
                                 leftIconName="SearchIcon"
                                 placeholder="Search locations or members"
                                 backgroundColor={'$white'}
-                                placeholderTextColor="$primary"
+                                placeholderTextColor="$primaryLight"
                                 color="$white"
                                 w={'100%'}
                                 addOns={[

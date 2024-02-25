@@ -20,22 +20,28 @@ const ProfileUpgradeNotice: React.FC<IProfileUpgradeNotice> = ({
                 w={'$90'}
                 borderRadius={'$4'}
                 borderWidth={'$px'}
-                borderColor={'$gray9'}
-                bg={'$gray7'}
+                borderColor={'$red10'}
+                bg={'$primary'}
             >
                 <YStack
                     w={'100%'}
                     ai={'center'}
                 >
                     <Icon
-                        name={'LogoTextSVG'}
-                        height={18}
-                        color={'$primary'}
+                        width={150}
+                        name="LogoTextSVG"
+                        color={'$white'}
                     />
                 </YStack>
 
                 <Text
+                    shadowColor={'$white'}
+                    shadowOffset={{width: 0, height: 2}}
+                    shadowOpacity={0}
+                    shadowRadius={2}
                     mt="$2"
+                    color={'$white'}
+                    ta={'center'}
                     {...TEXT_OPTIONS.BodyRegularS}
                 >
                     Seviye atladın! Artık tüm Beğenilerin öncelikli.
@@ -44,15 +50,20 @@ const ProfileUpgradeNotice: React.FC<IProfileUpgradeNotice> = ({
                 </Text>
                 <Stack mt="$4">
                     <Button
-                        w={'58%'}
+                        w={'100%'}
                         mt="$8"
                         size="large"
-                        bg={'$primary'}
+                        bg={'$primaryLight'}
                         onPress={onPress}
+                        borderColor={'$red9'}
                     >
                         <Text
                             {...TEXT_OPTIONS.BodySemiBoldS}
                             color={'$white'}
+                            shadowColor={'$white'}
+                            shadowOffset={{width: 2, height: 2}}
+                            shadowOpacity={0.8}
+                            shadowRadius={2}
                         >
                             Premium Ayarlarına Git
                         </Text>

@@ -23,6 +23,7 @@ const TabsLayout = () => {
         <Tabs
             screenOptions={{
                 tabBarActiveTintColor: APP_COLORS.primary,
+                tabBarInactiveTintColor: APP_COLORS.primaryLight,
 
                 tabBarStyle: {
                     height: 61,
@@ -60,6 +61,7 @@ const TabsLayout = () => {
                     headerShown: false,
                     tabBarLabel: 'Home',
                     tabBarActiveTintColor: APP_COLORS.primary,
+                    tabBarInactiveTintColor: APP_COLORS.primaryLight,
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon
@@ -80,10 +82,11 @@ const TabsLayout = () => {
             ></Tabs.Screen>
 
             <Tabs.Screen
-                name={APP_CONFIG.APP_ROUTES.TABS.STATS}
+                name={APP_CONFIG.APP_ROUTES.TABS.SCAN}
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Map',
+                    tabBarInactiveTintColor: APP_COLORS.primaryLight,
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon
@@ -103,16 +106,18 @@ const TabsLayout = () => {
                 }}
             ></Tabs.Screen>
             <Tabs.Screen
-                name={APP_CONFIG.APP_ROUTES.TABS.SCAN}
+                name={APP_CONFIG.APP_ROUTES.TABS.MAP}
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
                     tabBarLabel: '',
+                    tabBarInactiveTintColor: APP_COLORS.white,
+
                     tabBarIcon: ({color, size}) => (
                         <IconButton
                             onPress={() =>
                                 router.push(
-                                    APP_CONFIG.APP_PATHS.TABS.SCAN,
+                                    APP_CONFIG.APP_PATHS.TABS.MAP,
                                 )
                             }
                             marginTop="$space.-5"
@@ -123,8 +128,8 @@ const TabsLayout = () => {
                             borderWidth={'$px'}
                             borderColor={'$primaryLight'}
                             outlineColor="$grayscale800"
-                            color="$white"
-                            icon="Scan"
+                            color="$primaryLight"
+                            icon="LocationIcon"
                             shadowColor={'$red'}
                             shadowOffset={{
                                 width: 0,
@@ -142,6 +147,7 @@ const TabsLayout = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Messages',
+                    tabBarInactiveTintColor: APP_COLORS.primaryLight,
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon
@@ -165,6 +171,7 @@ const TabsLayout = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Profile',
+                    tabBarInactiveTintColor: APP_COLORS.primaryLight,
                     tabBarIcon: ({color, size, focused}) =>
                         focused ? (
                             <Icon

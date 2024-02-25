@@ -28,7 +28,7 @@ const APP_ROUTES = {
   TABS: {
     HOME: 'home',
     SCAN: 'scan',
-    STATS: 'stats',
+    MAP: 'map',
     CHAT: 'chat',
     PROFILE: 'profile',
   },
@@ -67,7 +67,7 @@ const APP_PATHS = {
   TABS: {
     HOME: '/(tabs)/home',
     SCAN: '/(private)/scan',
-    STATS: '/(tabs)/stats',
+    MAP: '/(tabs)/map',
     CHAT: '/(tabs)/chat',
     PROFILE: '/(tabs)/profile',
   },

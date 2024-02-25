@@ -15,29 +15,31 @@ const Profile = () => {
     const profileCards = [
         {
             bg: '$primary',
-            borderWidth: '$0.5',
-            borderColor: '$primaryLight',
-            superLikes: 0,
+
+            superLikes: 5 + ' Super Likes',
+            borderColor: '$red10',
             description: 'DAHA FAZLA AL',
+            icon: 'AdIcon',
         },
         {
-            bg: '$primaryLight',
-            borderWidth: '$px',
+            bg: '$primary',
+            superLikes: 5 + ' Boosts',
             borderColor: '$primaryLight',
             description: 'DAHA FAZLA AL',
+            icon: 'AdIcon',
         },
         {
-            bg: '$primaryLight',
-            borderWidth: '$px',
+            bg: '$primary',
             borderColor: '$primaryLight',
-            description: "TS PLATINUM™'um",
+            description: "Travel See PLATINUM™'um",
+            icon: 'AdIcon',
         },
     ];
 
     return (
         <ScreenContainer
             horizontalPadding={0}
-            verticalPadding={false}
+            verticalPadding={0}
         >
             <YStack
                 w={'100%'}
@@ -54,18 +56,12 @@ const Profile = () => {
                         ai={'flex-start'}
                         jc={'space-between'}
                         gap={'$6'}
-                        r
                     >
                         <XStack
                             mr={'$15'}
                             h={'100%'}
-                        >
-                            <Icon
-                                height={20}
-                                name="LogoTextSVG"
-                            />
-                        </XStack>
-                        <XStack>
+                        ></XStack>
+                        <XStack mt={'$3'}>
                             <Stack>
                                 <CircleIconButton
                                     icon="Secure"
@@ -89,8 +85,8 @@ const Profile = () => {
                     <YStack
                         ai={'center'}
                         w={'100%'}
-                        h={'20%'}
                         borderRadius={'$6'}
+                        mt={'$2'}
                     >
                         <ProfileAvatar
                             age={29}
@@ -98,7 +94,6 @@ const Profile = () => {
                         />
                     </YStack>
                     <XStack
-                        w={'100%'}
                         style={{justifyContent: 'center'}}
                         gap={'$4'}
                         mt={'$12'}
@@ -114,11 +109,12 @@ const Profile = () => {
                                     borderColor={card.borderColor}
                                     superLikes={card.superLikes}
                                     description={card.description}
+                                    icon={card.icon}
                                 />
                             </Stack>
                         ))}
                     </XStack>
-                    <Stack mt={'$32'}>
+                    <Stack mt={'$13'}>
                         <ProfileUpgradeNotice onPress={() => {}} />
                     </Stack>
                 </YStack>

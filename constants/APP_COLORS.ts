@@ -11,7 +11,11 @@ const APP_COLORS = {
   shark: "#1C1C1E",
   nero: "#1A0700",
 
-  primary: "#BA00A2D9",
+  primary: "#FF665E",
+  primaryLight: "#FFB2AF",
+  secondary: "#009A95",
+  secondaryLight: "#9ED7D8",
+
   primary21: "#BA00A2D936",
   primary19: "#BA00A2D930",
   primary08: "#BA00A2D914",
@@ -38,11 +42,11 @@ const APP_COLORS = {
 
 
   lightColors: {
-    bg: '#ffffff',
+    bg: '#FFFFFF',
     bgSocial: '#ffffff',
-    background: '#BA00A205',
+    background: '#FFFFFF',
     bgActive: '#0000001b',
-    bgApp: '#ffffff',
+    bgApp: '#F5F5F5',
     bgBackdrop: '#00000044',
     bgCaution: '#ffe30139',
     bgCautionStrong: '#fadc00d2',
@@ -195,16 +199,11 @@ const APP_COLORS = {
 
 
     //TARAT COLORS
-    primary: "#BA00A2D9",
-    primaryLight: "#BA00A250",
-    primary21: "#BA00A2D936",
-    primary19: "#BA00A2D930",
-    primary08: "#BA00A2D914",
-    primary05: "#BA00A2D980",
-    primary02: "#BA00A2D905",
-    primary008: "#BA00A2D914",
-    primaryAlpha50: "#BA00A2D950",
-    primaryAlpha25: "#BA00A2D925",
+    primary: "#FF665E",
+    primaryLight: '#FFB2AF',
+    secondary: "#009A95",
+    secondaryLight: "#9ED7D8",
+
 
     red: "#ff4201",
     pink: '#E77D7D',
@@ -415,8 +414,10 @@ const APP_COLORS = {
 
     //TARAT COLORS
 
-    primary: "#BA00A2D9",
-    primaryLight: "#BA00A250",
+    primary: "#FF665E",
+    primaryLight: "#FFB2AF",
+    secondary: "#009A95",
+    secondaryLight: "#9ED7D8",
     primary21: "#BA00A2D936",
     primary19: "#BA00A2D930",
     primary08: "#BA00A2D914",
