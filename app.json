@@ -31,7 +31,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.observerdev.travelsee",
+      "package": "com.observerdev.travel-see",
       "config": {
         "googleMaps": {
           "apiKey": "pk.eyJ1Ijoib2JzZXJ2ZXJkZXYiLCJhIjoiY2xzeWIxN28yMGJxNzJscHA5cTlkY2hmcSJ9.f5saPByL2ncLa5q26001ow"
@@ -52,7 +52,7 @@
         "expo-build-properties",
         {
           "ios": {
-            "deploymentTarget": "13.0"
+            "deploymentmetroget": "13.0"
           }
         }
       ],

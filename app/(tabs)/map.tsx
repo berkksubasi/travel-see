@@ -8,14 +8,14 @@ const MapScreen = () => {
     const campgrounds = [
         {
             id: 1,
-            title: 'İstanbul',
+            title: 'İstanbul Camping Area',
             description: 'Bu bir kamp alanıdır.',
             latitude: 41.0082,
             longitude: 28.9784,
         },
         {
             id: 2,
-            title: 'Berlin',
+            title: 'Berlin tiny house',
             description: 'Bu bir kamp alanıdır.',
             latitude: 52.52,
             longitude: 13.405,
@@ -24,7 +24,6 @@ const MapScreen = () => {
 
     return (
         <YStack
-            flex={1}
             w={'100%'}
             h={'100%'}
         >
@@ -34,16 +33,10 @@ const MapScreen = () => {
                     initialRegion={{
                         latitude: 41.0082, // Default Value ( ISTANBUL )
                         longitude: 28.9784,
-                        latitudeDelta: 1, // Zoom Default Value
-                        longitudeDelta: 1,
+                        latitudeDelta: 10, // Zoom Default Value
+                        longitudeDelta: 10,
                     }}
                 >
-                    <YStack
-                        w={'100%'}
-                        h={'100%'}
-                    >
-                        <Text>dskfhjskjfhsldkfjhljhkdsjhjk</Text>
-                    </YStack>
                     {/* Camping Area Marker */}
                     {campgrounds.map((campground) => (
                         <Marker
