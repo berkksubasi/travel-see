@@ -19,39 +19,39 @@ import {
     YStack,
 } from '@ui';
 
-interface IProps {
+type IProps = {
     isBelongsToWizard?: boolean;
     onConfirm: () => void;
-}
+};
 
-interface IButtonPropsType {
+type IButtonPropsType = {
     title: string;
     icon?: string;
     variant: 'primary' | 'secondary';
-}
+};
 
 const buttons: IButtonPropsType[] = [
     {
-        title: 'Sonraki',
+        title: 'Next',
         icon: 'ChevronRightIcon',
         variant: 'primary',
     },
     {
-        title: 'Atla',
+        title: 'Step',
         variant: 'secondary',
     },
 ];
 
 const location: any[] = [
     {
-        title: 'Ülke Seç',
+        title: 'Select Country',
         name: 'country',
         icon: 'LocationIcon',
         defaultOpen: false,
         size: 'large',
-        defaultValue: 'Türkiye',
+        defaultValue: 'Turkey',
         items: [
-            'Türkiye',
+            'Turkey',
             'Afghanistan',
             'Azerbaijan',
             'China',
@@ -61,7 +61,7 @@ const location: any[] = [
         ].map((item) => ({label: item, value: item})),
     },
     {
-        title: 'Şehir Seç',
+        title: 'Select City',
         name: 'city',
         icon: 'LocationIcon',
         defaultOpen: false,
@@ -73,7 +73,7 @@ const location: any[] = [
         })),
     },
     {
-        title: 'İlçe Seç',
+        title: 'Select District',
         name: 'district',
         icon: 'LocationIcon',
         defaultOpen: false,
@@ -107,7 +107,7 @@ const AddressDetails: React.FC<IProps> = ({
 
     const handleSubmit = (p0: string, value: string) => {
         if (form.getFieldState('country')?.error) {
-            return Toast.error({title: 'Lütfen Ülke Seçiniz!'});
+            return Toast.error({title: 'Please Select City!'});
         }
 
         if (form.getFieldState('city')?.error) {
@@ -115,19 +115,21 @@ const AddressDetails: React.FC<IProps> = ({
         }
 
         if (form.getFieldState('district')?.error) {
-            return Toast.error({title: 'Lütfen İlçe Seçiniz!'});
+            return Toast.error({title: 'Please Select District!'});
         }
 
         if (form.getFieldState('address_details')?.error) {
             return Toast.error({
-                title: 'Lütfen Adres Detaylarını Giriniz!',
+                title: 'Please Enter Address Details!',
             });
         }
 
         const response = userServices
             .updateAddressInformations(form.getValues())
             .then((res) => {
-                Toast.success({title: 'Bilgineriniz Güncellendi'});
+                Toast.success({
+                    title: 'Your Information Has Been Updated',
+                });
                 if (onConfirm) {
                     onConfirm();
                 } else {
@@ -182,34 +184,34 @@ const AddressDetails: React.FC<IProps> = ({
                 <ButtonGoBack />
             </HeaderShown>
             <YStack
-                alignItems={'center'}
-                justifyContent={'center'}
-                gap={'$3'}
+                alignItems="center"
+                justifyContent="center"
+                gap="$3"
             >
                 <AddressDetailsSVG />
                 <Text
-                    textAlign={'center'}
-                    marginTop={'$0.5'}
-                    color={'$grayscale900'}
+                    textAlign="center"
+                    marginTop="$0.5"
+                    color="$grayscale900"
                     {...TEXT_OPTIONS.H4}
                 >
-                    Adres Bilgileri
+                    Address Informations
                 </Text>
                 <Text
-                    textAlign={'center'}
-                    marginTop={'$px'}
-                    color={'$grayscale600'}
+                    textAlign="center"
+                    marginTop="$px"
+                    color="$grayscale600"
                     {...TEXT_OPTIONS.BodyRegularM}
                 >
-                    Adres bilginiz paylaşılmayacaktır hızlı sipariş
-                    için saklanacaktır!
+                    Your address information will be stored for
+                    possible future billing!
                 </Text>
             </YStack>
             <YStack
-                marginTop={'$9'}
-                alignItems={'center'}
-                gap={'$3'}
-                w={'100%'}
+                marginTop="$9"
+                alignItems="center"
+                gap="$3"
+                w="100%"
             >
                 {location.map((item, index) => (
                     <Select
@@ -231,25 +233,25 @@ const AddressDetails: React.FC<IProps> = ({
                         }}
                     />
                 ))}
-                <YStack w={'100%'}>
+                <YStack w="100%">
                     <Form form={form}>
                         <Form.Field
-                            key={'addresssssss'}
+                            key="addresssssss"
                             name="address_details"
                             rules={{
                                 required: {
                                     value: true,
                                     message:
-                                        'Adres tarifi boş bırakılamaz',
+                                        'Address description cannot be left blank',
                                 },
                             }}
                         >
                             <TextArea
-                                width={'100%'}
+                                width="100%"
                                 textAlignVertical="top"
-                                textAlign={'left'}
-                                placeholder="Adres tarifi"
-                                minHeight={'$size.25'}
+                                textAlign="left"
+                                placeholder="Address description"
+                                minHeight="$size.25"
                             />
                         </Form.Field>
                     </Form>
@@ -258,15 +260,15 @@ const AddressDetails: React.FC<IProps> = ({
             {/* BUTTONS */}
             {isBelongsToWizard ? (
                 <YStack
-                    width={'100%'}
-                    marginTop={'$30'}
-                    mb={'$2'}
+                    width="100%"
+                    marginTop="$30"
+                    mb="$2"
                 >
                     {buttons.map((button, index) => (
                         <Button
                             key={index}
                             variant={button.variant}
-                            size={'large'}
+                            size="large"
                             borderColor="$transparent"
                             iconAfter={button.icon}
                         >
@@ -285,22 +287,22 @@ const AddressDetails: React.FC<IProps> = ({
                 </YStack>
             ) : (
                 <YStack
-                    width={'100%'}
-                    marginTop={'$30'}
+                    width="100%"
+                    marginTop="$30"
                 >
                     <Button
                         variant="primary"
                         size="large"
-                        marginTop={'$4'}
-                        mb={'$9'}
+                        marginTop="$4"
+                        mb="$9"
                         iconAfter="ChevronRightIcon"
                         onPress={handleSubmit}
                     >
                         <Text
                             {...TEXT_OPTIONS.BodySemiBoldL}
-                            color={'$white'}
+                            color="$white"
                         >
-                            Kaydet
+                            Save
                         </Text>
                     </Button>
                 </YStack>
