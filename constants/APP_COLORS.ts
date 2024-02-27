@@ -198,7 +198,7 @@ const APP_COLORS = {
     success9: '#008f4acf',
 
 
-    //TARAT COLORS
+    // TARAT COLORS
     primary: "#FF665E",
     primaryLight: '#FFB2AF',
     secondary: "#009A95",
@@ -223,7 +223,7 @@ const APP_COLORS = {
     buttonText: '#ffffffec',
 
 
-    //ALERT & STATUS
+    // ALERT & STATUS
 
     success: "#00C247",
     info: "#004CE8",
@@ -232,7 +232,7 @@ const APP_COLORS = {
     disabled: "#F7F7F7",
 
 
-    //TARAT GRAYSCALE
+    // TARAT GRAYSCALE
 
     grayscale900: '#212121',
     grayscale800: '#424242',
@@ -246,7 +246,7 @@ const APP_COLORS = {
     grayscale50: '#FAFAFA',
 
 
-    //OTHERS
+    // OTHERS
 
     white: '#FFFFFF',
     black: '#000000',
@@ -412,7 +412,7 @@ const APP_COLORS = {
 
 
 
-    //TARAT COLORS
+    // TARAT COLORS
 
     primary: "#FF665E",
     primaryLight: "#FFB2AF",
@@ -445,7 +445,7 @@ const APP_COLORS = {
 
 
 
-    //ALERT & STATUS
+    // ALERT & STATUS
 
     success: "#00C247",
     info: "#004CE8",
@@ -453,7 +453,7 @@ const APP_COLORS = {
     error: "#EA2929",
     disabled: "#F7F7F7",
 
-    //TARAT GRAYSCALE
+    // TARAT GRAYSCALE
 
 
 
@@ -471,7 +471,7 @@ const APP_COLORS = {
     grayscale50: '#242424',
 
 
-    //OTHERS
+    // OTHERS
 
     white: '#000000',
     black: '#FFFFFF',

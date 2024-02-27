@@ -1,10 +1,10 @@
 import React from 'react';
-//Constants
+// Constants
 import TEXT_OPTIONS from '@constants/TEXT_OPTIONS';
-//UI Lib.
+// UI Lib.
 import {Icon, Switch, Text, XStack, YStack} from '@ui';
 
-const Settings = ({variant}: {variant: string}) => {
+function Settings({variant}: {variant: string}) {
     const getContainerStyles = () => {
         switch (variant) {
             case 'withSwitch':
@@ -47,27 +47,27 @@ const Settings = ({variant}: {variant: string}) => {
     };
 
     return (
-        <YStack width={'100%'}>
+        <YStack width="100%">
             <XStack {...getContainerStyles()}>
                 <Icon
-                    name={'UserIcon'}
-                    fontSize={'$size.6'}
+                    name="UserIcon"
+                    fontSize="$size.6"
                     color="$primary"
-                ></Icon>
+                />
                 <Text {...TEXT_OPTIONS.BodyMediumM}>
-                    Kişisel Bilgiler
+                    Personal Informations
                 </Text>
                 {variant !== 'withSwitch' && (
                     <Icon
-                        name={'ChevronRightSmallOutline'}
+                        name="ChevronRightSmallOutline"
                         color="$grayscale400"
-                        fontSize={'$size.6'}
-                    ></Icon>
+                        fontSize="$size.6"
+                    />
                 )}
                 {variant === 'withSwitch' && <Switch />}
             </XStack>
         </YStack>
     );
-};
+}
 
 export default Settings;

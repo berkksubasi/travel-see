@@ -1,11 +1,11 @@
-//React
+// React
 import React, {useMemo, useState} from 'react';
-//Common Lib.
+// Common Lib.
 import {CircleIconButton, ScreenContainer} from '@components';
-//Constants
+// Constants
 import {TEXT_OPTIONS} from '@constants';
 import {IResetPassword} from '@interfaces';
-//UI Lib.
+// UI Lib.
 import {
     Button,
     Form,
@@ -16,7 +16,7 @@ import {
     YStack,
 } from '@ui';
 
-const ChangePassword = () => {
+function ChangePassword() {
     const form = useForm<IResetPassword>({
         defaultValues: {
             oldPassword: '',
@@ -32,10 +32,10 @@ const ChangePassword = () => {
 
     const [secureEntry, setSecureEntry] = useState(true);
     const rightActions = useMemo(() => {
-        const actions: {
+        const actions: Array<{
             iconName?: IKeyOfIcons;
             onPress?: () => void;
-        }[] = [];
+        }> = [];
         actions.push({
             iconName: secureEntry ? 'HideIcon' : 'ShowIcon',
             onPress: () => {
@@ -47,18 +47,18 @@ const ChangePassword = () => {
 
     return (
         <ScreenContainer
-            verticalPadding={true}
-            horizontalPadding={true}
-            showGoBackButton={true}
+            verticalPadding
+            horizontalPadding
+            showGoBackButton
         >
             <YStack
-                width={'100%'}
-                alignItems={'center'}
-                gap={'$4'}
+                width="100%"
+                alignItems="center"
+                gap="$4"
             >
                 <YStack
-                    gap={'$2'}
-                    marginBottom={'$8'}
+                    gap="$2"
+                    marginBottom="$8"
                 >
                     <CircleIconButton
                         variant="primary"
@@ -66,21 +66,22 @@ const ChangePassword = () => {
                         color="$white"
                     />
                     <YStack
-                        gap={'$3'}
-                        alignItems={'center'}
+                        gap="$3"
+                        alignItems="center"
                     >
                         <Text {...TEXT_OPTIONS.H4}>
-                            Şifre Değiştir
+                            Change Password
                         </Text>
                         <Text
                             {...TEXT_OPTIONS.BodyRegularM}
-                            color={'$grayscale600'}
+                            color="$grayscale600"
                         >
-                            Lütfen eski şifrenizi girip devam ediniz
+                            Change password Please enter your old
+                            password and continue.
                         </Text>
                     </YStack>
                 </YStack>
-                <YStack width={'100%'}>
+                <YStack width="100%">
                     <Form form={form}>
                         <Form.Field
                             name="oldPassword"
@@ -88,7 +89,7 @@ const ChangePassword = () => {
                                 required: {
                                     value: true,
                                     message:
-                                        'Lütfen Eski Şifrenizi Giriniz',
+                                        'Please Enter Your Old Password',
                                 },
                             }}
                         >
@@ -99,7 +100,7 @@ const ChangePassword = () => {
                                 secureTextEntry={secureEntry}
                                 addOns={rightActions}
                                 leftIconName="LockIcon"
-                                placeholder="Eski Şifreniz"
+                                placeholder="Old Password"
                             />
                         </Form.Field>
                         <Form.Field
@@ -108,7 +109,7 @@ const ChangePassword = () => {
                                 required: {
                                     value: true,
                                     message:
-                                        'Lütfen Yeni Şifrenizi Giriniz',
+                                        'Please Enter Your New Password',
                                 },
                             }}
                         >
@@ -119,7 +120,7 @@ const ChangePassword = () => {
                                 secureTextEntry={secureEntry}
                                 addOns={rightActions}
                                 leftIconName="LockIcon"
-                                placeholder="Yeni Şifreniz"
+                                placeholder="New Password"
                             />
                         </Form.Field>
                         <Form.Field
@@ -128,7 +129,7 @@ const ChangePassword = () => {
                                 required: {
                                     value: true,
                                     message:
-                                        'Lütfen Şifrenizi Tekrar Giriniz',
+                                        'Please Re-Enter Your New Password',
                                 },
                             }}
                         >
@@ -139,7 +140,7 @@ const ChangePassword = () => {
                                 secureTextEntry={secureEntry}
                                 addOns={rightActions}
                                 leftIconName="LockIcon"
-                                placeholder="Şifrenizi Tekrar Giriniz"
+                                placeholder="Please Re-enter your password"
                             />
                         </Form.Field>
                     </Form>
@@ -148,22 +149,22 @@ const ChangePassword = () => {
                 <Button
                     variant="primary"
                     size="large"
-                    marginTop={'$23'}
-                    width={'100%'}
+                    marginTop="$23"
+                    width="100%"
                     onPress={() => {
                         console.log(form.getValues());
                     }}
                 >
                     <Text
                         {...TEXT_OPTIONS.BodySemiBoldL}
-                        color={'$white'}
+                        color="$white"
                     >
-                        Değiştir
+                        Save
                     </Text>
                 </Button>
             </YStack>
         </ScreenContainer>
     );
-};
+}
 
 export default ChangePassword;

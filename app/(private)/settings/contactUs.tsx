@@ -30,7 +30,7 @@ import {
 } from '@ui';
 
 // Select Type
-interface ISelectType {
+type ISelectType = {
     title: string;
     name: string;
     icon: IKeyOfIcons;
@@ -38,10 +38,10 @@ interface ISelectType {
     defaultOpen: boolean;
     size: string;
     defaultValue: string;
-    items: {label: string; value: string}[];
-}
+    items: Array<{label: string; value: string}>;
+};
 
-const ContactUs = () => {
+function ContactUs() {
     const [messageLength, setMessageLength] = useState(0);
     const maxMessageLength = 100;
     const [selectedInfo, setSelectedInfo] = useState<SelectedInfo>({
@@ -60,18 +60,18 @@ const ContactUs = () => {
 
     const info: ISelectType[] = [
         {
-            title: 'Konu Seçiniz',
+            title: 'Select Subject',
             name: 'subject',
             icon: 'TopicIcon',
             iconColor: '$grayscale600',
             defaultOpen: false,
             size: 'large',
-            defaultValue: 'Konu Seçiniz',
+            defaultValue: 'Select Subject',
             items: [
-                'Konu Seçiniz',
-                'Şikayet ve İhbar',
-                'Uygulama ile İlgili',
-                'Diğer',
+                'Select Subject',
+                'Complaint and Notification',
+                'Application Related',
+                'Other',
             ].map((item) => ({
                 label: item,
                 value: item,
@@ -83,16 +83,16 @@ const ContactUs = () => {
 
     return (
         <ScreenContainer
-            horizontalPadding={true}
+            horizontalPadding
             verticalPadding={0}
         >
             <HeaderShown>
                 <ButtonGoBack />
             </HeaderShown>
-            <YStack gap={'$12'}>
+            <YStack gap="$12">
                 <Stack
-                    width={'100%'}
-                    alignItems={'center'}
+                    width="100%"
+                    alignItems="center"
                 >
                     <CircleIconButton
                         variant="primary"
@@ -100,37 +100,37 @@ const ContactUs = () => {
                         color="$white"
                     />
                     <Text
-                        marginVertical={'$3'}
+                        marginVertical="$3"
                         {...TEXT_OPTIONS.H4}
                     >
-                        Bize Ulaşın
+                        Contact us
                     </Text>
                     <Text
-                        textAlign={'center'}
+                        textAlign="center"
                         {...TEXT_OPTIONS.BodyRegularM}
-                        color={'$grayscale600'}
+                        color="$grayscale600"
                     >
-                        Mümkün olan en iyi kullanıcı deneyimi için
-                        müşterilerimizi her zaman destekliyoruz, her
-                        türlü şikayet ve iyileştirmeyi buradan
-                        gönderebilirsiniz.
+                        For the best possible user experience We
+                        always support our customers, every All kinds
+                        of complaints and improvements can be found
+                        here you can send.
                     </Text>
                 </Stack>
 
                 <Stack
-                    width={'100%'}
-                    gap={'$4'}
-                    marginBottom={'$0.5'}
+                    width="100%"
+                    gap="$4"
+                    marginBottom="$0.5"
                 >
                     {map(info, (info, index) => (
                         <Stack
-                            width={'100%'}
-                            alignItems={'center'}
+                            width="100%"
+                            alignItems="center"
                             justifyContent="space-between"
                             key={index}
                         >
                             <Select
-                                size={'$heading4xl'}
+                                size="$heading4xl"
                                 triggerProps={{
                                     borderRadius: '$3',
                                 }}
@@ -152,23 +152,23 @@ const ContactUs = () => {
 
                     <Form form={form}>
                         <Form.Field
-                            name={'email'}
-                            key={'Email'}
+                            name="email"
+                            key="Email"
                             rules={{
                                 required: {
                                     value: true,
                                     message:
-                                        'Lütfen e-posta adresinizi giriniz',
+                                        'Please enter your e-mail address',
                                 },
                             }}
                         >
                             <Input
                                 {...TEXT_OPTIONS.BodyMediumM}
                                 size="large"
-                                bg={'$transparent'}
+                                bg="$transparent"
                                 leftIconName="MailIcon"
                                 error={false}
-                                placeholder="E-posta adresinizi giriniz"
+                                placeholder="Enter your e-mail address"
                                 onChange={() => {
                                     console.log(form.getValues());
                                 }}
@@ -178,30 +178,30 @@ const ContactUs = () => {
                     <Form form={form}>
                         <Form.Field
                             name="message"
-                            key={'Message'}
+                            key="Message"
                             rules={{
                                 required: {
                                     value: true,
                                     message:
-                                        'Lütfen mesajınızı giriniz',
+                                        'Please enter your message',
                                 },
                             }}
                         >
                             <YStack
-                                h={'$27'}
-                                pb={'$4'}
-                                pt={'$2.5'}
-                                px={'$1'}
-                                borderRadius={'$4'}
-                                borderWidth={'$px'}
-                                borderColor={'$grayscale200'}
+                                h="$27"
+                                pb="$4"
+                                pt="$2.5"
+                                px="$1"
+                                borderRadius="$4"
+                                borderWidth="$px"
+                                borderColor="$grayscale200"
                             >
                                 <TextArea
                                     {...TEXT_OPTIONS.BodyMediumM}
                                     textAlignVertical="top"
-                                    bg={'$transparent'}
-                                    borderWidth={'$0'}
-                                    placeholder="Mesajınızı Yazınız"
+                                    bg="$transparent"
+                                    borderWidth="$0"
+                                    placeholder="Write Your Message"
                                     maxLength={maxMessageLength}
                                     onChange={(text) => {
                                         setMessageLength(
@@ -211,8 +211,8 @@ const ContactUs = () => {
                                     }}
                                 />
                                 <XStack
-                                    justifyContent={'flex-end'}
-                                    px={'$3'}
+                                    justifyContent="flex-end"
+                                    px="$3"
                                 >
                                     <Text
                                         {...TEXT_OPTIONS.BodyRegularS}
@@ -232,8 +232,8 @@ const ContactUs = () => {
                     </Form>
                 </Stack>
                 <Stack
-                    width={'100%'}
-                    marginTop={'$16'}
+                    width="100%"
+                    marginTop="$16"
                 >
                     <Button
                         variant="primary"
@@ -250,15 +250,15 @@ const ContactUs = () => {
                     >
                         <Text
                             {...TEXT_OPTIONS.BodySemiBoldL}
-                            color={'$white'}
+                            color="$white"
                         >
-                            Gönder
+                            Submit
                         </Text>
                     </Button>
                 </Stack>
             </YStack>
         </ScreenContainer>
     );
-};
+}
 
 export default ContactUs;

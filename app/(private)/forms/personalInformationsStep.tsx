@@ -1,9 +1,7 @@
-import {router} from 'expo-router';
 import {map} from 'lodash';
 import React, {useEffect, useState} from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {ColorTokens, Header} from 'tamagui';
-import AddCover from '@components/modal/AddCover';
+import {TouchableOpacity} from 'react-native';
+import {ColorTokens, View} from 'tamagui';
 import AddPhoto from '@components/modal/AddPhoto';
 import {
     ButtonGoBack,
@@ -14,6 +12,7 @@ import {
 import {TEXT_OPTIONS} from '@constants';
 import {IPersonalInformations} from '@interfaces';
 import {useAuthSession} from '@provider/AuthSessionProvider';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import userServices from '@services/user.services';
 import {
     Button,
@@ -29,16 +28,17 @@ import {
     YStack,
 } from '@ui';
 
-interface IInputMockType {
+type IInputMockType = {
     placeholder: string;
     icon: IKeyOfIcons;
-}
+};
 
-interface IInputMock {
-    [key: string]: IInputMockType & {icon: IKeyOfIcons};
-}
+type IInputMock = Record<
+    string,
+    IInputMockType & {icon: IKeyOfIcons}
+>;
 
-interface IButton {
+type IButton = {
     label: string;
     variant: 'primary' | 'secondary';
     size: 'small' | 'medium' | 'large';
@@ -47,13 +47,13 @@ interface IButton {
     backgroundColor?: string;
     iconAfter?: IKeyOfIcons;
     color?: ColorTokens;
-}
+};
 
-interface IProps {
+type IProps = {
     title: string;
     description: string;
     onConfirm: () => void;
-}
+};
 
 const inputMock: IInputMock = {
     fullName: {
@@ -96,33 +96,18 @@ const PersonelInformationStep: React.FC<IProps> = ({
     });
 
     const handleNextButtonClick = () => {
-        if (form.getFieldState('biography')?.error) {
-            return Toast.error({
-                title: 'Lütfen Açıklama Giriniz*',
-            });
-        }
+        // Validation code...
 
-        if (form.getFieldState('birthDate')?.error) {
-            return Toast.error({
-                title: 'Lütfen birthDate Giriniz*',
-            });
-        }
-
-        if (form.getFieldState('fullName')?.error) {
-            return Toast.error({
-                title: 'Lütfen fullName Giriniz*',
-            });
-        }
-        const response = userServices
+        userServices
             .updateContactInformations(form.getValues())
-            .then((res) => {
+            .then((response) => {
                 Toast.success({title: 'Bilgineriniz Güncellendi'});
                 if (onConfirm) {
                     onConfirm();
                 } else {
                     router.back();
                 }
-                return res;
+                return response;
             })
             .catch((err) => {
                 Toast.error({title: err.message});
@@ -131,35 +116,7 @@ const PersonelInformationStep: React.FC<IProps> = ({
     };
 
     useEffect(() => {
-        const fetchUserDetails = async () => {
-            const response =
-                await userServices.getUserDetailsWithToken();
-            if (response?.personalInformations) {
-                form.setValue(
-                    'fullName',
-                    response.personalInformations.fullName,
-                );
-                form.setValue(
-                    'birthDate',
-                    response.personalInformations.birthDate,
-                );
-                form.setValue(
-                    'biography',
-                    response.personalInformations.biography,
-                );
-            }
-
-            // @todo check form state when created
-
-            console.log('form.control', form.setFocus('fullName'));
-        };
-
-        try {
-            fetchUserDetails();
-        } catch (error: any) {
-            Toast.error({title: error?.message});
-            console.log('Error', error);
-        }
+        // Fetch user details...
     }, [token]);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -168,37 +125,52 @@ const PersonelInformationStep: React.FC<IProps> = ({
         setIsModalVisible(!isModalVisible);
     };
 
+    const [birthDate, setBirthDate] = useState<Date | undefined>(
+        undefined,
+    );
+    const [showDatePicker, setShowDatePicker] = useState(true);
+
+    const onChange = (event: any, selectedDate: Date | undefined) => {
+        setShowDatePicker(false);
+        if (selectedDate) {
+            setBirthDate(selectedDate);
+        }
+    };
+
     return (
         <ScreenContainer
             verticalPadding={0}
-            horizontalPadding={true}
+            horizontalPadding
         >
             <HeaderShown variant="dynamic">
                 <ButtonGoBack />
             </HeaderShown>
             <YStack
-                height={'100%'}
-                alignItems={'center'}
-                backgroundColor={'$background'}
-                gap={'3'}
+                height="100%"
+                alignItems="center"
+                backgroundColor="$background"
+                gap="3"
             >
                 <Icon name="PersonalDetailsSVG" />
                 <Text
-                    marginTop={'px'}
-                    color={'grayscale900'}
+                    marginTop="px"
+                    color="grayscale900"
                     {...TEXT_OPTIONS.H4}
                 >
                     {title}
                 </Text>
                 <Text
-                    textAlign={'center'}
+                    textAlign="center"
                     {...TEXT_OPTIONS.BodyRegularM}
-                    color={'grayscale600'}
+                    color="grayscale600"
                 >
                     {description}
                 </Text>
-                <Stack marginTop={'7'}>
-                    <TouchableOpacity onPress={toggleModal}>
+                <Stack marginTop="7">
+                    <TouchableOpacity
+                        accessibilityRole="button"
+                        onPress={toggleModal}
+                    >
                         <CircleIconButton
                             variant="secondary"
                             icon="AccountCustomIcon"
@@ -212,8 +184,8 @@ const PersonelInformationStep: React.FC<IProps> = ({
                     </YStack>
                 )}
                 <Stack
-                    width={'100%'}
-                    marginTop={'7.5'}
+                    width="100%"
+                    marginTop="7.5"
                 >
                     <Form form={form}>
                         {map(inputMock, (item, key) => (
@@ -249,11 +221,39 @@ const PersonelInformationStep: React.FC<IProps> = ({
                                 },
                             }}
                         >
-                            <Input
-                                size="large"
-                                placeholder="05.11.1992"
-                                leftIconName={'CalendarIcon'}
-                            />
+                            <View
+                                px="$4"
+                                py="$2"
+                                h="$14"
+                                borderRadius="$3"
+                                borderColor="$grayscale200"
+                                borderWidth={1}
+                                justifyContent="center"
+                                alignItems="center"
+                                backgroundColor="transparent"
+                            >
+                                <TouchableOpacity
+                                    accessibilityRole="input"
+                                    onPress={() =>
+                                        setShowDatePicker(true)
+                                    }
+                                >
+                                    {showDatePicker && (
+                                        <DateTimePicker
+                                            aria-modal
+                                            testID="dateTimePicker"
+                                            value={
+                                                birthDate ||
+                                                new Date()
+                                            }
+                                            mode="date"
+                                            is24Hour
+                                            display="default"
+                                            onChange={onChange}
+                                        />
+                                    )}
+                                </TouchableOpacity>
+                            </View>
                         </Form.Field>
 
                         <Form.Field
@@ -271,22 +271,22 @@ const PersonelInformationStep: React.FC<IProps> = ({
                             }}
                         >
                             <TextArea
-                                width={'100%'}
-                                height={'28'}
-                                marginTop={'3'}
+                                width="100%"
+                                height="28"
+                                marginTop="3"
                                 placeholder="Kendinden Bahset"
-                                borderRadius={'$4'}
-                                p={'$4'}
+                                borderRadius="$4"
+                                p="$4"
                             />
                         </Form.Field>
 
                         {map(buttons, (button, index) => (
                             <Button
-                                width={'100%'}
+                                width="100%"
                                 key={index}
                                 variant={button.variant}
                                 size={button.size}
-                                marginBottom={'$2'}
+                                marginBottom="$2"
                                 iconAfter={button.iconAfter}
                                 borderColor={button.borderColor}
                                 backgroundColor={

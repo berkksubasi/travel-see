@@ -1,21 +1,21 @@
-//Lodash
+// Lodash
 import {router} from 'expo-router';
 import {map} from 'lodash';
 import React, {useEffect, useState} from 'react';
 import {ListItem, ListItemFrame} from 'tamagui';
 import {useStorageState} from '@hooks/useStorageState';
-//Common Lib.
+// Common Lib.
 import {
     ButtonGoBack,
     CircleIconButton,
     HeaderShown,
     ScreenContainer,
 } from '@components';
-//Constants
+// Constants
 import {APP_CONFIG, TEXT_OPTIONS} from '@constants';
 import {useAuthSession} from '@provider/AuthSessionProvider';
 import {useThemeSession} from '@provider/ThemeSessionProvider';
-//UI Lib.
+// UI Lib.
 import {
     Button,
     Icon,
@@ -36,7 +36,7 @@ export default function SettingScreen() {
     const {theme, changeTheme, isLoading} = useThemeSession();
 
     const {signOut} = useAuthSession();
-    interface ItemListType {
+    type ItemListType = {
         icon: IKeyOfIcons;
         iconAfter?: IKeyOfIcons;
         rightElement?: {
@@ -46,12 +46,12 @@ export default function SettingScreen() {
         value?: boolean;
         title: string;
         onPress?: () => void;
-    }
+    };
 
     const items: ItemListType[] = [
         {
             icon: 'UserIcon',
-            title: 'Hesap Ayarları',
+            title: ' Account Settings',
             iconAfter: 'ChevronRightSmallOutline',
             onPress: () => {
                 router.push(APP_CONFIG.APP_PATHS.SETTINGS_ACCOUNT);
@@ -59,7 +59,7 @@ export default function SettingScreen() {
         },
         {
             icon: 'EditIcon',
-            title: 'Bilgilerimi Güncelle',
+            title: ' Update Information',
             iconAfter: 'ChevronRightSmallOutline',
             onPress: () => {
                 router.push(APP_CONFIG.APP_PATHS.UPDATE_INFO);
@@ -67,7 +67,7 @@ export default function SettingScreen() {
         },
         {
             icon: 'ConnectIcon',
-            title: ' İletişim Bilgileri',
+            title: ' Contact Information',
             iconAfter: 'ChevronRightSmallOutline',
             onPress: () => {
                 router.push(APP_CONFIG.APP_PATHS.CONNECTIONS_SOURCE);
@@ -75,7 +75,7 @@ export default function SettingScreen() {
         },
         {
             icon: 'NotifyIcon',
-            title: ' Bildirimler',
+            title: ' Notifications',
             rightElement: {
                 value: notificationSwitch,
                 onValueChange: () =>
@@ -84,18 +84,16 @@ export default function SettingScreen() {
         },
         {
             icon: 'BrushIcon',
-            title: ' Karanlık Mod',
+            title: ' Dark Mode',
             rightElement: {
                 value: theme === 'dark',
                 onValueChange: async () =>
-                    await changeTheme(
-                        theme === 'dark' ? 'light' : 'dark',
-                    ),
+                    changeTheme(theme === 'dark' ? 'light' : 'dark'),
             },
         },
         {
             icon: 'PrivacyIcon',
-            title: ' Gizlilik Politikası',
+            title: ' Privacy Policy',
             iconAfter: 'ChevronRightSmallOutline',
             onPress: () => {
                 router.push(APP_CONFIG.APP_PATHS.PRIVACY_POLICY);
@@ -103,7 +101,7 @@ export default function SettingScreen() {
         },
         {
             icon: 'FAQIcon',
-            title: ' Uygulama Hakkında',
+            title: ' About the Application',
             iconAfter: 'ChevronRightSmallOutline',
             onPress: () => {
                 router.push(APP_CONFIG.APP_PATHS.ABOUT);
@@ -111,7 +109,7 @@ export default function SettingScreen() {
         },
         {
             icon: 'SupportIcon',
-            title: ' Bize Ulaşın',
+            title: ' Contact Us',
             iconAfter: 'ChevronRightSmallOutline',
             onPress: () => {
                 router.push(APP_CONFIG.APP_PATHS.CONTACT_US);
@@ -125,48 +123,48 @@ export default function SettingScreen() {
                 <ButtonGoBack />
             </HeaderShown>
             <YStack
-                alignItems={'center'}
-                height={'100%'}
-                width={'100%'}
+                alignItems="center"
+                height="100%"
+                width="100%"
             >
                 <YStack
-                    gap={'$2'}
-                    marginBottom={'$8'}
+                    gap="$2"
+                    marginBottom="$8"
                 >
                     <CircleIconButton
                         variant="primary"
                         icon="SettingsCustomIcon"
                         color="$white"
                     />
-                    <Text {...TEXT_OPTIONS.H4}>Ayarlar</Text>
+                    <Text {...TEXT_OPTIONS.H4}>Settings</Text>
                 </YStack>
-                <Stack w={'100%'}>
+                <Stack w="100%">
                     <ScrollView showCustomScrollBar={false}>
                         <YStack
-                            w={'100%'}
-                            gap={'$4'}
-                            mb={'$2'}
+                            w="100%"
+                            gap="$4"
+                            mb="$2"
                         >
                             {map(items, (item, index) => (
                                 <ListItem
                                     key={index}
-                                    width={'100%'}
-                                    maxHeight={'$size.14'}
-                                    padding={'$space.4'}
-                                    alignItems={'center'}
-                                    justifyContent={'space-between'}
-                                    borderColor={'$grayscale100'}
-                                    borderWidth={'$size.0.5'}
-                                    borderRadius={'$4'}
+                                    width="100%"
+                                    maxHeight="$size.14"
+                                    padding="$space.4"
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    borderColor="$grayscale100"
+                                    borderWidth="$size.0.5"
+                                    borderRadius="$4"
                                     onPress={item.onPress}
                                 >
-                                    <XStack alignItems={'center'}>
+                                    <XStack alignItems="center">
                                         <Icon
                                             name={item.icon}
-                                            color={'$primary'}
+                                            color="$primary"
                                         />
                                         <Text
-                                            height={'$4'}
+                                            height="$4"
                                             {...TEXT_OPTIONS.BodyMediumM}
                                         >
                                             {item.title}
@@ -187,7 +185,7 @@ export default function SettingScreen() {
                                     ) : (
                                         <Icon
                                             name="ChevronRightIcon"
-                                            color={'$grayscale400'}
+                                            color="$grayscale400"
                                         />
                                     )}
                                 </ListItem>
@@ -195,23 +193,34 @@ export default function SettingScreen() {
                         </YStack>
                         <Button
                             variant="secondary"
-                            width="100%"
                             size="large"
-                            icon="LogoutIcon"
-                            borderColor={'$primary'}
-                            borderWidth={'$px'}
+                            color="$black"
+                            borderColor="$primary"
+                            borderWidth="$px"
                             backgroundColor="$background"
+                            ai="center"
+                            jc="center"
                         >
-                            <Text
-                                {...TEXT_OPTIONS.BodySemiBoldL}
-                                ta={'center'}
-                                onPress={() => {
-                                    console.log('test');
-                                    signOut();
-                                }}
+                            <XStack
+                                gap="$1"
+                                ai="center"
+                                jc="center"
                             >
-                                Çıkış Yap
-                            </Text>
+                                <Icon
+                                    name="LogoutIcon"
+                                    color="$primary"
+                                />
+                                <Text
+                                    {...TEXT_OPTIONS.BodySemiBoldL}
+                                    ta="center"
+                                    onPress={() => {
+                                        console.log('logout');
+                                        signOut();
+                                    }}
+                                >
+                                    Logout
+                                </Text>
+                            </XStack>
                         </Button>
                     </ScrollView>
                 </Stack>

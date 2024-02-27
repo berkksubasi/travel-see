@@ -1,4 +1,4 @@
-//Lodash
+// Lodash
 import {map} from 'lodash';
 import React, {useState} from 'react';
 import {
@@ -6,11 +6,15 @@ import {
     TextInputChangeEventData,
 } from 'react-native';
 import {Form} from 'tamagui';
-//SVG
-import {HeaderShown, ScreenContainer} from '@components';
-//Common Lib.
+// SVG
+import {
+    ButtonGoBack,
+    HeaderShown,
+    ScreenContainer,
+} from '@components';
+// Common Lib.
 import {DEFAULTS, TEXT_OPTIONS} from '@constants';
-//UI Lib.
+// UI Lib.
 import {
     Button,
     Icon,
@@ -29,26 +33,27 @@ import {
 
 // INTERFACES - Start
 
-//Content
+// Content
 
-interface IProps {
+type IProps = {
     title: string;
     description: string;
     onConfirm?: () => void;
-}
+};
 
-//Input
-interface IInputMockType {
+// Input
+type IInputMockType = {
     placeholder: string;
     icon: IKeyOfIcons;
-}
+};
 
-interface IInputMock {
-    [key: string]: IInputMockType & {icon: IKeyOfIcons};
-}
+type IInputMock = Record<
+    string,
+    IInputMockType & {icon: IKeyOfIcons}
+>;
 
-//Button
-interface IButton {
+// Button
+type IButton = {
     label: string;
     variant: 'primary' | 'secondary';
     height: number;
@@ -58,9 +63,9 @@ interface IButton {
     borderColor?: string;
     backgroundColor?: string;
     onConfirm?: () => void;
-}
+};
 
-//INTERFACES - End
+// INTERFACES - End
 
 // CONSTANTS
 
@@ -70,26 +75,22 @@ const inputMock: IInputMock = {
         placeholder: 'GSM',
         icon: 'SmartphoneIcon',
     },
-    birthday: {
-        placeholder: 'Ev Telefonu',
-        icon: 'PhoneIcon',
-    },
 };
 // ButtonConstants
 // @todo for OGUZ: Icon' type should be adjusted
 const buttons: IButton[] = [
     {
-        label: 'Facebook ile Bağlan',
+        label: 'Connect with OnlyFans',
         variant: 'secondary',
         height: 56,
         mb: '$4',
         borderColor: '$grayscale200',
         backgroundColor: '$transparent',
-        icon: 'FacebookIcon',
+        icon: 'XIcon',
         onConfirm() {},
     },
     {
-        label: 'Instagram ile Bağlan',
+        label: 'Connect with Instagram',
         variant: 'secondary',
         height: 56,
         mb: '$4',
@@ -98,14 +99,15 @@ const buttons: IButton[] = [
         icon: 'InstagramIcon',
         onConfirm() {},
     },
+
     {
-        label: 'X ile Bağlan',
+        label: 'Connect with Facebook',
         variant: 'secondary',
         height: 56,
         mb: '$4',
         borderColor: '$grayscale200',
         backgroundColor: '$transparent',
-        icon: 'XIcon',
+        icon: 'FacebookIcon',
         onConfirm() {},
     },
 ];
@@ -131,12 +133,15 @@ const ConctactDetailStep: React.FC<IProps> = ({
 
     return (
         <ScreenContainer headerPadding>
-            <HeaderShown showGoBackButton />
+            <HeaderShown paddingVertical={5}>
+                <ButtonGoBack />
+            </HeaderShown>
+
             {/* TOP PART */}
             <YStack
-                alignItems={'center'}
-                gap={'$3'}
-                marginBottom={'$9'}
+                alignItems="center"
+                gap="$3"
+                marginBottom="$9"
             >
                 {/* INDICATOR */}
 
@@ -144,230 +149,204 @@ const ConctactDetailStep: React.FC<IProps> = ({
 
                 {/* TITLE */}
                 <Text
-                    color={'$grayscale900'}
+                    color="$grayscale900"
                     {...TEXT_OPTIONS.H4}
-                    marginTop={'$px'}
+                    marginTop="$px"
                 >
-                    {title ? title : 'İletişim Bilgileri'}
+                    {title || 'Contact Information'}
                 </Text>
 
                 {/* DESCRIPTION */}
                 <Text
-                    textAlign={'center'}
-                    color={'$grayscale600'}
+                    textAlign="center"
+                    color="$grayscale600"
                     {...TEXT_OPTIONS.BodyRegularM}
                 >
-                    {description
-                        ? description
-                        : "TARAT'ınızla size ulaşılmasını istediğin iletişim bilgilerini paylaş."}
+                    {description ||
+                        'Share the information you want to receive via TS App.'}
                 </Text>
             </YStack>
             <YStack
-                w={'100%'}
-                h={'53%'}
+                w="100%"
+                h="53%"
             >
-                <ScrollView width={'100%'} showOverlay  >
-                    <YStack width={'100%'}>
-                        {/* CONTENT PART */}
-                        {/* todo for OGUZ: ScrollView scroll bar should be customized as in the design */}
-                        <YStack gap={'$3'}>
-                            {/* INPUTS */}
+                <YStack width="100%">
+                    {/* CONTENT PART */}
+                    {/* todo for OGUZ: ScrollView scroll bar should be customized as in the design */}
+                    <YStack gap="$3">
+                        {/* INPUTS */}
+                        <YStack
+                            alignItems="center"
+                            justifyContent="center"
+                            position="relative"
+                            width="100%"
+                        >
+                            <Stack
+                                backgroundColor="$grayscale100"
+                                width="100%"
+                                height="$px"
+                                position="absolute"
+                            />
+
+                            <Text
+                                {...TEXT_OPTIONS.BodyRegularM}
+                                color="$grayscale400"
+                                backgroundColor="$background"
+                                paddingHorizontal="$2"
+                                paddingVertical="$3"
+                            >
+                                Contact Information
+                            </Text>
+                        </YStack>
+                        <Form form={contactDetailsForm}>
+                            <YStack gap="$3">
+                                {map(inputMock, (item, key) => (
+                                    <Input
+                                        size="large"
+                                        key={key}
+                                        placeholder={
+                                            inputMock[key]
+                                                ?.placeholder
+                                        }
+                                        leftIconName={
+                                            inputMock[key]?.icon
+                                        }
+                                        borderColor="$grayscale200"
+                                        onChange={
+                                            inputMock[key]
+                                                ?.placeholder ===
+                                            'GSM'
+                                                ? onChangeHandler
+                                                : undefined
+                                        }
+                                    />
+                                ))}
+                            </YStack>
+                            <XStack
+                                width="100%"
+                                maxHeight="$size.14"
+                                paddingHorizontal="$space.3"
+                                paddingVertical="$4"
+                                alignItems="center"
+                                mt="$3"
+                                justifyContent="space-between"
+                                borderColor="$grayscale100"
+                                borderWidth="$size.0.5"
+                                borderRadius="$4"
+                            >
+                                <XStack
+                                    alignItems="center"
+                                    gap="$2"
+                                >
+                                    <Icon
+                                        name="WhatsappIcon"
+                                        color="$primary"
+                                    />
+                                    <YStack alignItems="flex-start">
+                                        <Text
+                                            {...TEXT_OPTIONS.BodyRegularS}
+                                            color="$grayscale600"
+                                        >
+                                            Use the entered phone
+                                            information.
+                                        </Text>
+                                        <Text
+                                            {...TEXT_OPTIONS.BodyMediumM}
+                                            color="$grayscale900"
+                                        >
+                                            {phoneNo && isSwitchOn
+                                                ? phoneNo
+                                                : '-'}
+                                        </Text>
+                                    </YStack>
+                                    <Switch
+                                        size="large"
+                                        bg="$primary"
+                                        value={isSwitchOn}
+                                        onChange={() =>
+                                            setIsSwitchOn(!isSwitchOn)
+                                        }
+                                    />
+                                </XStack>
+
+                                {/* @todo fix  */}
+                            </XStack>
+                            {/* SEPARATOR */}
+
                             <YStack
-                                alignItems={'center'}
-                                justifyContent={'center'}
-                                position={'relative'}
+                                alignItems="center"
+                                justifyContent="center"
+                                position="relative"
                                 width="100%"
                             >
                                 <Stack
                                     backgroundColor="$grayscale100"
-                                    width={'100%'}
-                                    height={'$px'}
-                                    position={'absolute'}
+                                    width="100%"
+                                    height="$px"
+                                    position="absolute"
                                 />
 
                                 <Text
                                     {...TEXT_OPTIONS.BodyRegularM}
-                                    color={'$grayscale400'}
+                                    color="$grayscale400"
                                     backgroundColor="$background"
-                                    paddingHorizontal={'$2'}
+                                    paddingHorizontal="$2"
                                     paddingVertical="$3"
                                 >
-                                    İletişim Bilgileri
+                                    Social Media
                                 </Text>
                             </YStack>
-                            <Form form={contactDetailsForm}>
-                                <YStack gap={'$3'}>
-                                    {map(inputMock, (item, key) => (
-                                        <Input
-                                            size="large"
-                                            key={key}
-                                            placeholder={
-                                                inputMock[key]
-                                                    ?.placeholder
-                                            }
-                                            leftIconName={
-                                                inputMock[key]?.icon
-                                            }
-                                            borderColor={
-                                                '$grayscale200'
-                                            }
-                                            onChange={
-                                                inputMock[key]
-                                                    ?.placeholder ===
-                                                'GSM'
-                                                    ? onChangeHandler
-                                                    : undefined
-                                            }
-                                        />
-                                    ))}
-                                </YStack>
-                                <XStack
-                                    width={'100%'}
-                                    maxHeight={'$size.14'}
-                                    paddingHorizontal={'$space.3'}
-                                    paddingVertical={'$4'}
-                                    alignItems={'center'}
-                                    mt={'$3'}
-                                    justifyContent={'space-between'}
-                                    borderColor={'$grayscale100'}
-                                    borderWidth={'$size.0.5'}
-                                    borderRadius={'$4'}
-                                >
-                                    <XStack
-                                        alignItems={'center'}
-                                        gap={'$2'}
+
+                            {/* BUTTONS */}
+
+                            <YStack
+                                width="100%"
+                                justifyContent="space-between"
+                                gap="$3"
+                            >
+                                {map(buttons, (button, index) => (
+                                    <ListItem
+                                        justifyContent="flex-start"
+                                        key={index}
+                                        variant={button.variant}
+                                        height={button.height}
+                                        icon={button.icon}
+                                        borderColor={
+                                            button.borderColor
+                                        }
+                                        backgroundColor={
+                                            button.backgroundColor
+                                        }
+                                        borderRadius="$4"
+                                        onPress={button.onConfirm}
                                     >
-                                        <Icon
-                                            name="WhatsappIcon"
-                                            color={'$primary'}
-                                        />
-                                        <YStack
-                                            alignItems={'flex-start'}
-                                        >
-                                            <Text
-                                                {...TEXT_OPTIONS.BodyRegularS}
-                                                color={
-                                                    '$grayscale600'
-                                                }
-                                            >
-                                                Girilen Telefon
-                                                Bilgisi Kullanılsın
-                                            </Text>
-                                            <Text
-                                                {...TEXT_OPTIONS.BodyMediumM}
-                                                color={
-                                                    '$grayscale900'
-                                                }
-                                            >
-                                                {phoneNo && isSwitchOn
-                                                    ? phoneNo
-                                                    : '-'}
-                                            </Text>
-                                        </YStack>
-                                        <Switch
-                                            size="large"
-                                            bg={'$primary'}
-                                            value={isSwitchOn}
-                                            onChange={() =>
-                                                setIsSwitchOn(
-                                                    !isSwitchOn,
-                                                )
-                                            }
-                                        />
-                                    </XStack>
-
-                                    {/* @todo fix  */}
-                                </XStack>
-                                {/* SEPARATOR */}
-
-                                <YStack
-                                    alignItems={'center'}
-                                    justifyContent={'center'}
-                                    position={'relative'}
-                                    width="100%"
-                                >
-                                    <Stack
-                                        backgroundColor="$grayscale100"
-                                        width={'100%'}
-                                        height={'$px'}
-                                        position={'absolute'}
-                                    />
-
-                                    <Text
-                                        {...TEXT_OPTIONS.BodyRegularM}
-                                        color={'$grayscale400'}
-                                        backgroundColor="$background"
-                                        paddingHorizontal={'$2'}
-                                        paddingVertical="$3"
-                                    >
-                                        Sosyal Medya
-                                    </Text>
-                                </YStack>
-
-                                {/* BUTTONS */}
-
-                                <YStack
-                                    width={'100%'}
-                                    justifyContent={'space-between'}
-                                    gap={'$3'}
-                                >
-                                    {map(buttons, (button, index) => (
-                                        <ListItem
-                                            justifyContent={
-                                                'flex-start'
-                                            }
-                                            key={index}
-                                            variant={button.variant}
-                                            height={button.height}
-                                            icon={button.icon}
-                                            borderColor={
-                                                button.borderColor
-                                            }
-                                            backgroundColor={
-                                                button.backgroundColor
-                                            }
-                                            borderRadius={'$4'}
-                                            onPress={button.onConfirm}
-                                        >
-                                            <Text
-                                                alignItems={
-                                                    'flex-start'
-                                                }
-                                            >
-                                                {button.label}
-                                            </Text>
-                                        </ListItem>
-                                    ))}
-                                </YStack>
-                                <Input
-                                    size="large"
-                                    key="weburl"
-                                    placeholder="Web Sitenizi Giriniz"
-                                    leftIconName="WebIcon"
-                                    borderColor={'$grayscale200'}
-                                />
-                            </Form>
-                        </YStack>
+                                        <Text alignItems="flex-start">
+                                            {button.label}
+                                        </Text>
+                                    </ListItem>
+                                ))}
+                            </YStack>
+                        </Form>
                     </YStack>
-                </ScrollView>
+                </YStack>
             </YStack>
 
             {/* BOTTOM PART */}
             <YStack
                 gap={24}
-                width={'100%'}
-                mt={'$11.5'}
+                width="100%"
+                mt="$4"
             >
                 <Button
-                    alignItems={'flex-end'}
+                    alignItems="flex-end"
                     onPress={onConfirm}
-                    iconAfter={'ChevronRightIcon'}
+                    iconAfter="ChevronRightIcon"
                     variant="primary"
                     size="large"
                 >
                     <Text
                         {...TEXT_OPTIONS.BodySemiBoldL}
-                        color={'$white'}
+                        color="$white"
                     >
                         Sonraki
                     </Text>

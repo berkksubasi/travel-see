@@ -18,7 +18,7 @@ import {
     YStack,
 } from '@ui';
 
-interface ItemListType {
+type ItemListType = {
     icon: IKeyOfIcons;
     iconAfter: IKeyOfIcons;
     title: string;
@@ -26,38 +26,38 @@ interface ItemListType {
         | typeof APP_CONFIG.APP_PATHS.FORMS.ADDRESS_INFORMATIONS_STEP
         | typeof APP_CONFIG.APP_PATHS.FORMS.CONTACT_INFORMATIONS_STEP
         | typeof APP_CONFIG.APP_PATHS.FORMS.PROFILE_INFORMATIONS_STEP;
-}
+};
 
 const items: ItemListType[] = [
     {
         icon: 'UserIcon',
-        title: 'Kişisel Bilgiler',
+        title: ' Personal Information',
         iconAfter: 'ChevronRightSmallOutline',
         path: APP_CONFIG.APP_PATHS.FORMS.PROFILE_INFORMATIONS_STEP,
     },
     {
         icon: 'PhoneIcon',
-        title: 'İletişim Bilgileri',
+        title: ' Contact Information',
         iconAfter: 'ChevronRightSmallOutline',
         path: APP_CONFIG.APP_PATHS.FORMS.CONTACT_INFORMATIONS_STEP,
     },
     {
         icon: 'LocationIcon',
-        title: ' Adres Bilgileri',
+        title: ' Address Informations',
         iconAfter: 'ChevronRightSmallOutline',
         path: APP_CONFIG.APP_PATHS.FORMS.ADDRESS_INFORMATIONS_STEP,
     },
 ];
-const UpdateInfo = () => {
+function UpdateInfo() {
     return (
         <ScreenContainer verticalPadding={0}>
             <HeaderShown>
                 <ButtonGoBack />
             </HeaderShown>
             <YStack
-                alignItems={'center'}
-                height={'100%'}
-                width={'100%'}
+                alignItems="center"
+                height="100%"
+                width="100%"
             >
                 <CircleIconButton
                     variant="primary"
@@ -71,7 +71,7 @@ const UpdateInfo = () => {
                         marginBottom="$space.8"
                         {...TEXT_OPTIONS.H4}
                     >
-                        Bilgilerimi Güncelle
+                        Update Information
                     </Text>
                 </Stack>
 
@@ -79,24 +79,24 @@ const UpdateInfo = () => {
                 {map(items, (item, index) => (
                     <ListItem
                         key={index}
-                        width={'100%'}
-                        maxHeight={'$size.14'}
-                        marginBottom={'$4'}
-                        padding={'$space.4'}
-                        alignItems={'center'}
-                        justifyContent={'space-between'}
-                        borderColor={'$grayscale100'}
-                        borderWidth={'$size.0.5'}
-                        borderRadius={'$4'}
+                        width="100%"
+                        maxHeight="$size.14"
+                        marginBottom="$4"
+                        padding="$space.4"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        borderColor="$grayscale100"
+                        borderWidth="$size.0.5"
+                        borderRadius="$4"
                         onPress={() => router.push(item.path)}
                     >
                         <XStack
-                            alignItems={'center'}
-                            gap={'$3'}
+                            alignItems="center"
+                            gap="$3"
                         >
                             <Icon
                                 name={item.icon}
-                                color={'$primary'}
+                                color="$primary"
                             />
                             <Text {...TEXT_OPTIONS.BodyMediumM}>
                                 {item.title}
@@ -104,14 +104,14 @@ const UpdateInfo = () => {
                         </XStack>
 
                         <Icon
-                            name={'ChevronRightIcon'}
-                            color={'$grayscale400'}
+                            name="ChevronRightIcon"
+                            color="$grayscale400"
                         />
                     </ListItem>
                 ))}
             </YStack>
         </ScreenContainer>
     );
-};
+}
 
 export default UpdateInfo;

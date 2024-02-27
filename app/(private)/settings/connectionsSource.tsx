@@ -22,12 +22,12 @@ import {
     YStack,
 } from '@ui';
 
-interface ConnectionSourceProps {
+type ConnectionSourceProps = {
     icon: IKeyOfIcons;
     color?: ColorTokens;
     text: string;
     phoneNumber: string;
-}
+};
 
 const ConnectionSource: React.FC = () => {
     const [switchValues, setSwitchValues] = useState<boolean[]>([
@@ -42,28 +42,28 @@ const ConnectionSource: React.FC = () => {
         {
             icon: 'PhoneFillIcon',
             color: '$primary',
-            text: 'İnsanlar burdan bağlantı kurabilir',
+            text: 'People can connect',
             phoneNumber: '+905553453354',
         },
         {
             icon: 'MailFillIcon',
             color: '$primary',
-            text: 'İnsanlar burdan bağlantı kurabilir',
+            text: 'People can connect',
             phoneNumber: 'johndoe12@gmail.com',
         },
         {
             icon: 'FacebookIcon',
-            text: 'İnsanlar burdan bağlantı kurabilir',
+            text: 'People can connect',
             phoneNumber: 'JohnDoe2',
         },
         {
             icon: 'InstagramIcon',
-            text: 'İnsanlar burdan bağlantı kurabilir',
+            text: 'People can connect',
             phoneNumber: 'John_doe32',
         },
         {
             icon: 'XIcon',
-            text: 'İnsanlar burdan bağlantı kurabilir',
+            text: 'People can connect',
             phoneNumber: 'The_Johndoe',
         },
     ];
@@ -80,9 +80,9 @@ const ConnectionSource: React.FC = () => {
                 <ButtonGoBack />
             </HeaderShown>
             <YStack
-                width={'100%'}
-                alignItems={'center'}
-                justifyContent={'space-between'}
+                width="100%"
+                alignItems="center"
+                justifyContent="space-between"
             >
                 <CircleIconButton
                     variant="primary"
@@ -90,36 +90,37 @@ const ConnectionSource: React.FC = () => {
                     color="$white"
                 />
 
-                <Stack alignItems={'center'}>
+                <Stack alignItems="center">
                     <Text
                         marginTop="$space.4"
-                        marginBottom={'$3'}
+                        marginBottom="$3"
                         {...TEXT_OPTIONS.H4}
                     >
-                        İletişim Bilgileri
+                        Contact Informations
                     </Text>
                     <Text
                         {...TEXT_OPTIONS.BodyRegularM}
-                        marginBottom={'$space.10'}
-                        color={'$grayscale600'}
+                        marginBottom="$space.10"
+                        color="$grayscale600"
                     >
-                        Gizlilik adına istediğinizi saklayabilirsiniz
+                        You can keep any information you want for
+                        privacy.
                     </Text>
                 </Stack>
 
                 {map(connectionSources, (source, index) => (
                     <Stack
                         key={index}
-                        width={'100%'}
-                        padding={'$4'}
-                        borderWidth={'$px'}
-                        borderColor={'$primary'}
-                        borderRadius={'$4'}
-                        marginBottom={'$3'}
+                        width="100%"
+                        padding="$4"
+                        borderWidth="$px"
+                        borderColor="$primary"
+                        borderRadius="$4"
+                        marginBottom="$3"
                     >
                         <XStack
-                            alignItems={'center'}
-                            justifyContent={'space-between'}
+                            alignItems="center"
+                            justifyContent="space-between"
                         >
                             <Icon
                                 name={source.icon}
@@ -130,7 +131,7 @@ const ConnectionSource: React.FC = () => {
                             <YStack>
                                 <Text
                                     {...TEXT_OPTIONS.BodyRegularS}
-                                    color={'$grayscale600'}
+                                    color="$grayscale600"
                                 >
                                     {source.text}
                                 </Text>
@@ -140,7 +141,7 @@ const ConnectionSource: React.FC = () => {
                             </YStack>
                             <Switch
                                 size="small"
-                                backgroundColor={'$primary'}
+                                backgroundColor="$primary"
                                 value={switchValues[index]}
                                 onChange={() =>
                                     handleSwitchChange(index)

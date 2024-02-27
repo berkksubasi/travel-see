@@ -91,7 +91,7 @@ function Profile() {
                         ai="center"
                         w="100%"
                         borderRadius="$6"
-                        mt="$2"
+                        mt="$1"
                     >
                         <ProfileAvatar
                             age={29}
@@ -101,12 +101,12 @@ function Profile() {
                     <XStack
                         style={{justifyContent: 'center'}}
                         gap="$4"
-                        mt="$12"
+                        mt="$6"
                     >
                         {_.map(profileCards, (card, index) => (
                             <Stack
                                 key={index}
-                                mt="$6"
+                                mt="$2"
                             >
                                 <ProfileCard1
                                     bg={card.bg}
