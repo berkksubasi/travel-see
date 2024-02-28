@@ -1,5 +1,5 @@
 import React from 'react';
-import {Avatar, CardBackground, CardFrame} from 'tamagui';
+import {CardBackground, CardFrame, styled} from 'tamagui';
 import {Image, Text, XStack, YStack} from '@ui/primitives';
 import TEXT_OPTIONS from '@constants/TEXT_OPTIONS';
 
@@ -24,13 +24,22 @@ const MainCard: React.FC<ICard> = ({
         ai="flex-start"
         jc="flex-end"
         p="$6"
+        bg="$primary"
         width="$82"
         height="$98"
         borderRadius="$6"
         backgroundImage={userPhoto}
         onClick={onClick}
     >
-        <CardBackground>
+        <CardBackground
+            ai="center"
+            p="$4"
+            borderRadius="$6"
+            shadowColor="$primaryLight"
+            shadowOffset={{width: 1, height: 1}}
+            shadowOpacity={0.4}
+            shadowRadius={3}
+        >
             <Image
                 borderRadius="$6"
                 source={userPhoto}
@@ -40,7 +49,8 @@ const MainCard: React.FC<ICard> = ({
                 }}
             />
         </CardBackground>
-        <YStack>
+
+        <YStack height={37}>
             <XStack>
                 <Text
                     {...TEXT_OPTIONS.H4}
@@ -64,7 +74,6 @@ const MainCard: React.FC<ICard> = ({
                 </Text>
             </XStack>
             <Text
-                mt="$0.5"
                 pr="$6"
                 color="white"
                 shadowColor="black"
@@ -75,29 +84,6 @@ const MainCard: React.FC<ICard> = ({
             >
                 {description}
             </Text>
-
-            <XStack
-                mt="$2"
-                ai="center"
-            >
-                <Avatar size="$6">
-                    <Avatar.Image
-                        borderRadius={100}
-                        source={userPhoto}
-                    />
-                </Avatar>
-                <Text
-                    ml="$2"
-                    color="white"
-                    shadowColor="black"
-                    shadowOffset={{width: 0, height: 2}}
-                    shadowOpacity={0.7}
-                    shadowRadius={2}
-                    {...TEXT_OPTIONS.BodyRegularM}
-                >
-                    {userName}
-                </Text>
-            </XStack>
         </YStack>
     </CardFrame>
 );
