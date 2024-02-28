@@ -1,36 +1,30 @@
 import 'core-js/stable/atob';
 import React from 'react';
-import {useWindowDimensions} from 'react-native';
 import useAppImages from '@hooks/useAppImages';
-// Common Components
 import {
     LoginButton,
     RegisterButton,
     ScreenContainer,
 } from '@/components';
 // Constants
-import {APP_CONFIG, TEXT_OPTIONS} from '@/constants';
+import {TEXT_OPTIONS} from '@/constants';
+import {Image, Stack, Text, YStack} from '@ui';
+
+// Common Components
+
 // Lib Components
-import {Icon, Image, Stack, Text, YStack} from '@ui';
 
 export default function WelcomeScreen() {
-    const {width} = useWindowDimensions();
     const {welcomeBg} = useAppImages();
 
     return (
         <ScreenContainer
-            verticalPadding={true}
-            horizontalPadding={true}
+            verticalPadding
+            horizontalPadding
         >
-            <Stack
-                width={width}
-                alignItems={'center'}
-                position="absolute"
-                bottom={0}
-            ></Stack>
             <YStack
+                h="100%"
                 style={{
-                    height: '100%',
                     width: '100%',
                     position: 'relative',
                 }}
@@ -38,13 +32,13 @@ export default function WelcomeScreen() {
                 alignItems="center"
             >
                 <Stack
-                    justifyContent={'center'}
-                    alignItems={'center'}
-                    gap={'$10'}
+                    justifyContent="center"
+                    alignItems="center"
+                    gap="$10"
                 >
-                    {/*LOGO*/}
+                    {/* LOGO */}
                     <YStack
-                        gap={'$5'}
+                        gap="$5"
                         alignItems="center"
                     >
                         <Image
@@ -54,18 +48,18 @@ export default function WelcomeScreen() {
                         />
                         <Text
                             textAlign="center"
-                            p={'$6'}
+                            p="$6"
                             {...TEXT_OPTIONS.H1}
                         >
-                            Travel See
+                            Travel Seeee
                         </Text>
                     </YStack>
                 </Stack>
 
-                {/*Button */}
+                {/* Button */}
                 <YStack
-                    w={'100%'}
-                    gap={'$4'}
+                    w="100%"
+                    gap="$4"
                 >
                     <LoginButton />
                     <RegisterButton />

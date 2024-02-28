@@ -169,7 +169,7 @@ function HomeScreen() {
                                     // Show toast
                                 }}
                             >
-                                Hoş geldin,
+                                Welcome,
                             </Text>
                             <Text color="$white">
                                 {userInfo?.username}
@@ -205,6 +205,7 @@ function HomeScreen() {
                             data={countryCardData}
                             renderItem={({item, index}) => (
                                 <CountryCard
+                                    key={index}
                                     countryName={item.countryName}
                                     bg={item.bg}
                                 />
