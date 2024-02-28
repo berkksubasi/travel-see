@@ -2,14 +2,12 @@ import {router} from 'expo-router';
 import {map} from 'lodash';
 import React, {useState} from 'react';
 import {Share} from 'react-native';
-import Carousel from 'react-native-snap-carousel';
-import {ObjectPicker} from '@components/object-picker';
+import Carousel from 'react-native-snap-carousel-v4';
 import ScannedQrBgSVG from '@ui/primitives/Icon/svg/ScannedQrBgSVG';
 import {
     ButtonGoBack,
     HeaderShown,
     ScreenContainer,
-    Slider,
 } from '@components';
 import {APP_CONFIG, APP_SHADOWS, TEXT_OPTIONS} from '@constants';
 import {
@@ -26,7 +24,7 @@ import {
     YStack,
 } from '@ui';
 
-interface FAQFeatures {
+type FAQFeatures = {
     price: string;
     owner: string;
     brand: string;
@@ -45,7 +43,7 @@ interface FAQFeatures {
     plate: string;
     from_who: string;
     swap: string;
-}
+};
 
 const keyMap: Record<keyof FAQFeatures, string> = {
     price: 'Fiyat',
@@ -133,7 +131,7 @@ const buttonStyles: Omit<IIconButtonProps, 'icon'> = {
 const handleProfilePress = () => {
     router.push(APP_CONFIG.APP_PATHS.PROFILE);
 };
-const ScannedQr = () => {
+function ScannedQr() {
     const [qrType, setQrType] = useState<'ad' | 'other'>('ad');
     const [viewType, setViewType] = useState<'own' | 'other'>('own');
 
@@ -151,7 +149,7 @@ const ScannedQr = () => {
         <ScreenContainer verticalPadding={0}>
             <HeaderShown>
                 <ButtonGoBack />
-                <XStack gap={'$6'}>
+                <XStack gap="$6">
                     <IconButton
                         icon="Share"
                         onPress={shareButton}
@@ -165,43 +163,43 @@ const ScannedQr = () => {
                 </XStack>
             </HeaderShown>
             <YStack
-                pos={'absolute'}
+                pos="absolute"
                 alignSelf="center"
-                top={'$36'}
+                top="$36"
             >
                 <ScannedQrBgSVG />
             </YStack>
             <YStack
-                borderWidth={'$1'}
-                borderColor={'$white'}
-                borderRadius={'$7'}
-                backgroundColor={'$background'}
+                borderWidth="$1"
+                borderColor="$white"
+                borderRadius="$7"
+                backgroundColor="$background"
                 {...APP_SHADOWS.xlarge}
                 mt={qrType === 'other' && '$20'}
             >
                 <YStack
-                    px={'$6'}
-                    py={'$3'}
-                    gap={'$4'}
-                    borderWidth={'$px'}
-                    borderColor={'$grayscale100'}
-                    borderRadius={'$6'}
+                    px="$6"
+                    py="$3"
+                    gap="$4"
+                    borderWidth="$px"
+                    borderColor="$grayscale100"
+                    borderRadius="$6"
                 >
                     <YStack
-                        gap={'$3'}
-                        ai={'center'}
+                        gap="$3"
+                        ai="center"
                     >
-                        <XStack mb={'$1'}>
+                        <XStack mb="$1">
                             <Text
                                 {...TEXT_OPTIONS.BodyMediumM}
-                                color={'$grayscale500'}
+                                color="$grayscale500"
                             >
                                 {qrType === 'ad' ? 'İlan' : 'Kayıt'}{' '}
                                 Tarihi:{' '}
                             </Text>
                             <Text
                                 {...TEXT_OPTIONS.BodyMediumM}
-                                color={'$grayscale900'}
+                                color="$grayscale900"
                             >
                                 {faqData.timestamp}
                             </Text>
@@ -216,13 +214,13 @@ const ScannedQr = () => {
                             {true ? (
                                 <XStack
                                     justifyContent="center"
-                                    ai={'center'}
-                                    width={'100%'}
-                                    height={'100%'}
-                                    borderRadius={'$4'}
-                                    backgroundColor={'$primary02'}
-                                    borderColor={'$grayscale100'}
-                                    borderWidth={'$px'}
+                                    ai="center"
+                                    width="100%"
+                                    height="100%"
+                                    borderRadius="$4"
+                                    backgroundColor="$primary02"
+                                    borderColor="$grayscale100"
+                                    borderWidth="$px"
                                 >
                                     <Icon name="LogoSVG" />
                                 </XStack>
@@ -246,7 +244,7 @@ const ScannedQr = () => {
                                     itemHeight={126}
                                     leftAlign
                                     renderItem={({item, index}) => (
-                                        <React.Fragment>
+                                        <>
                                             <Image
                                                 source={item.img}
                                                 style={{
@@ -279,7 +277,7 @@ const ScannedQr = () => {
                                                     {imageList.length}
                                                 </Text>
                                             </Stack>
-                                        </React.Fragment>
+                                        </>
                                     )}
                                 />
                             )}
@@ -288,22 +286,22 @@ const ScannedQr = () => {
                         <Text
                             {...TEXT_OPTIONS.BodySemiBoldL}
                             alignSelf="center"
-                            color={'$grayscale900'}
-                            mt={'$4'}
+                            color="$grayscale900"
+                            mt="$4"
                         >
                             {faqData.title}
                         </Text>
                         {qrType === 'ad' && (
                             <XStack>
                                 <Text
-                                    color={'$grayscale600'}
+                                    color="$grayscale600"
                                     {...TEXT_OPTIONS.BodyRegularM}
                                 >
-                                    İlan No: {''}
+                                    İlan No:
                                 </Text>
                                 <Text
                                     {...TEXT_OPTIONS.BodyMediumM}
-                                    color={'$primary'}
+                                    color="$primary"
                                 >
                                     {faqData.adNo}
                                 </Text>
@@ -312,18 +310,18 @@ const ScannedQr = () => {
                     </YStack>
                     {qrType === 'ad' && (
                         <YStack
-                            borderWidth={'$px'}
-                            borderColor={'$grayscale100'}
-                            borderRadius={'$2.5'}
-                            h={'$50'}
+                            borderWidth="$px"
+                            borderColor="$grayscale100"
+                            borderRadius="$2.5"
+                            h="$50"
                         >
                             <ScrollView
                                 showsVerticalScrollIndicator={false}
                             >
                                 <YStack
-                                    px={'$3'}
-                                    py={'$1.5'}
-                                    gap={'$3'}
+                                    px="$3"
+                                    py="$1.5"
+                                    gap="$3"
                                 >
                                     {map(
                                         faqData.features,
@@ -339,16 +337,12 @@ const ScannedQr = () => {
                                                 value || '-';
                                             return (
                                                 <XStack
-                                                    jc={
-                                                        'space-between'
-                                                    }
+                                                    jc="space-between"
                                                     key={key}
                                                 >
                                                     <Text
                                                         {...TEXT_OPTIONS.BodyRegularM}
-                                                        color={
-                                                            '$grayscale500'
-                                                        }
+                                                        color="$grayscale500"
                                                     >
                                                         {displayKey}
                                                     </Text>
@@ -376,23 +370,23 @@ const ScannedQr = () => {
                     )}
 
                     <YStack
-                        p={'$3'}
-                        gap={'$2'}
-                        backgroundColor={'$grayscale50'}
-                        borderWidth={'$px'}
-                        borderColor={'$grayscale100'}
-                        borderRadius={'$2.5'}
-                        h={'$32'}
+                        p="$3"
+                        gap="$2"
+                        backgroundColor="$grayscale50"
+                        borderWidth="$px"
+                        borderColor="$grayscale100"
+                        borderRadius="$2.5"
+                        h="$32"
                     >
                         <Text
                             {...TEXT_OPTIONS.BodyMediumS}
-                            color={'$grayscale900'}
+                            color="$grayscale900"
                         >
                             Açıklama
                         </Text>
                         <Text
                             {...TEXT_OPTIONS.BodyMediumS}
-                            color={'$grayscale600'}
+                            color="$grayscale600"
                         >
                             {faqData.description
                                 ? faqData.description
@@ -400,25 +394,25 @@ const ScannedQr = () => {
                         </Text>
                     </YStack>
                     {viewType === 'own' ? (
-                        <YStack gap={'$2'}>
+                        <YStack gap="$2">
                             <Button
                                 variant="primary"
-                                h={'$14'}
-                                py={'$2'}
-                                px={'$8'}
-                                borderRadius={'$4'}
+                                h="$14"
+                                py="$2"
+                                px="$8"
+                                borderRadius="$4"
                             >
                                 <XStack
-                                    ai={'center'}
-                                    gap={'$2'}
+                                    ai="center"
+                                    gap="$2"
                                 >
                                     <Icon
                                         name="EditIcon"
-                                        color={'$white'}
+                                        color="$white"
                                     />
                                     <Text
                                         {...TEXT_OPTIONS.BodySemiBoldL}
-                                        color={'$white'}
+                                        color="$white"
                                     >
                                         Düzenle
                                     </Text>
@@ -426,20 +420,20 @@ const ScannedQr = () => {
                             </Button>
                             <LinearGradient
                                 colors={['$whiteButton', '$white']}
-                                borderRadius={'$4'}
+                                borderRadius="$4"
                             >
                                 <Button
                                     variant="secondary"
-                                    h={'$14'}
-                                    py={'$2'}
-                                    px={'$8'}
-                                    borderRadius={'$4'}
-                                    borderColor={'$primary'}
-                                    bg={'$transparent'}
+                                    h="$14"
+                                    py="$2"
+                                    px="$8"
+                                    borderRadius="$4"
+                                    borderColor="$primary"
+                                    bg="$transparent"
                                 >
                                     <XStack
-                                        ai={'center'}
-                                        gap={'$2'}
+                                        ai="center"
+                                        gap="$2"
                                     >
                                         <Icon
                                             name={
@@ -447,11 +441,11 @@ const ScannedQr = () => {
                                                     ? 'AdIcon'
                                                     : 'DeleteIcon'
                                             }
-                                            color={'$black'}
+                                            color="$black"
                                         />
                                         <Text
                                             {...TEXT_OPTIONS.BodySemiBoldL}
-                                            color={'$black'}
+                                            color="$black"
                                         >
                                             {qrType === 'ad'
                                                 ? 'Aracımı Sattım'
@@ -463,38 +457,38 @@ const ScannedQr = () => {
                         </YStack>
                     ) : (
                         <XStack
-                            ai={'center'}
-                            jc={'space-between'}
+                            ai="center"
+                            jc="space-between"
                         >
                             <IconButton
                                 icon="UserIcon"
-                                color={'$grayscale900'}
+                                color="$grayscale900"
                                 variant="secondary"
-                                backgroundColor={'$background'}
-                                w={'$14'}
-                                h={'$14'}
-                                borderColor={'$primary'}
-                                borderRadius={'$4'}
+                                backgroundColor="$background"
+                                w="$14"
+                                h="$14"
+                                borderColor="$primary"
+                                borderRadius="$4"
                                 onPress={handleProfilePress}
                             />
                             <Button
                                 variant="primary"
-                                h={'$14'}
-                                py={'$2'}
-                                px={'$8'}
-                                borderRadius={'$4'}
+                                h="$14"
+                                py="$2"
+                                px="$8"
+                                borderRadius="$4"
                             >
                                 <XStack
-                                    ai={'center'}
-                                    gap={'$2'}
+                                    ai="center"
+                                    gap="$2"
                                 >
                                     <Icon
                                         name="SendIcon"
-                                        color={'$black'}
+                                        color="$black"
                                     />
                                     <Text
                                         {...TEXT_OPTIONS.BodySemiBoldL}
-                                        color={'$black'}
+                                        color="$black"
                                     >
                                         Mesaj Gönder
                                     </Text>
@@ -506,6 +500,6 @@ const ScannedQr = () => {
             </YStack>
         </ScreenContainer>
     );
-};
+}
 
 export default ScannedQr;
