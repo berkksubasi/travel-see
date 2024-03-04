@@ -8,7 +8,7 @@ First, run the development server:
 ```bash
 **Step1**
 #yarn install
-**Step 2**
+**Step2**
 yarn ios
 # or
 yarn android
