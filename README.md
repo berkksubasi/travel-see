@@ -6,9 +6,9 @@ A mono-repo application that will be available on web, iOS and Android platforms
 First, run the development server:
 
 ```bash
-**Step1**
+#**Step1**
 #yarn install
-**Step2**
+#**Step2**
 yarn ios
 # or
 yarn android
